@@ -41,23 +41,26 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-# Estilo de la página
-st.write(
-    f"""
+st.markdown(
+    """
     <style>
-        body {{
-            background-color: rgb(155, 222, 157);
-            color: rgb(22, 21, 21);
-        }}
+    .custom-container {
+        background-color: rgb(155, 222, 157);
+        color: rgb(22, 21, 21);
+        padding: 20px;
+        border-radius: 10px;
+    }
     </style>
     """,
     unsafe_allow_html=True
 )
+
 # Contenido de la aplicación
+st.markdown('<div class="custom-container">', unsafe_allow_html=True)
 st.markdown("<p class='big-font'>Título de la aplicación</p>", unsafe_allow_html=True)
 st.markdown("<div class='highlight'>Este es un texto resaltado.</div>", unsafe_allow_html=True)
 st.code("print('Hola, mundo!')")
-
+st.markdown('</div>', unsafe_allow_html=True)
 # Cargar y mostrar el logo
 logo = Image.open('Logo_Oficiall.png')
 st.sidebar.image(logo)
@@ -73,7 +76,6 @@ selected_tab = st.sidebar.selectbox('Selecciona una pestaña', tabs)
 
 if selected_tab == 'Nosotros':
     # Encabezado
-    st.code("
     st.markdown('<p style="text-align: center; font-size: 24px; font-weight: bold;">“Año de la unidad, la paz y el desarrollo”</p>', unsafe_allow_html=True)
     st.header('Universidad Peruana Cayetano Heredia')
     st.subheader('Curso:')
@@ -118,7 +120,6 @@ if selected_tab == 'Nosotros':
 	    st.write(' Envíanos un mensaje por Whatsapp y te responderemos lo antes posible:')
 	    for whatsapp in numeros_whatsapp:
 		    st.write(f'📲 [{whatsapp}](https://wa.me/{whatsapp})')
-    ")
 
 
 else:
