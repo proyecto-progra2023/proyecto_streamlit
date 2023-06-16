@@ -15,40 +15,31 @@ import matplotlib.dates as mdates
 from matplotlib.widgets import RangeSlider
 from PIL import Image
 
-# Estilo de la página
+# Contenido de la aplicación
 st.markdown(
     """
     <style>
-        .big-font {
-            font-size: 24px;
-            font-weight: bold;
-            color: red;
-            text-align: center;
-            padding-bottom: 20px;
-            font-family: cursive;
-        }
-        .highlight {
-            background-color: darkslategrey;
-            padding: 10px;
-            border-radius: 10px;
-        }
-        code {
-            font-family: 'Arial', sans-serif;
-            font-size: 14px;
-            color: red;
-        }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-st.markdown(
-    """
-    <style>
-    .custom-container {
+    body {
         background-color: rgb(155, 222, 157);
         color: rgb(22, 21, 21);
-        padding: 20px;
+    }
+    .big-font {
+        font-size: 24px;
+        font-weight: bold;
+        color: red;
+        text-align: center;
+        padding-bottom: 20px;
+        font-family: cursive;
+    }
+    .highlight {
+        background-color: darkslategrey;
+        padding: 10px;
         border-radius: 10px;
+    }
+    code {
+        font-family: 'Arial', sans-serif;
+        font-size: 14px;
+        color: red;
     }
     </style>
     """,
@@ -56,11 +47,9 @@ st.markdown(
 )
 
 # Contenido de la aplicación
-st.markdown('<div class="custom-container">', unsafe_allow_html=True)
 st.markdown("<p class='big-font'>Título de la aplicación</p>", unsafe_allow_html=True)
 st.markdown("Este es un texto resaltado")
 st.code("print('Hola, mundo!')")
-st.markdown('</div>', unsafe_allow_html=True)
 # Cargar y mostrar el logo
 logo = Image.open('Logo_Oficiall.png')
 st.sidebar.image(logo)
