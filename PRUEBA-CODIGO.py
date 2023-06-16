@@ -20,8 +20,6 @@ import streamlit.components.v1 as components
 with open("index.html", "r") as file:
     html_code = file.read()
 
-# Mostrar el contenido HTML usando el componente HTML
-components.html(html_code)
 # Contenido de la aplicación
 st.markdown(
     """
@@ -475,7 +473,9 @@ else:
 	    ¡Diviértete explorando los datos hidrometeorológicos y descubre nuevos conocimientos!
 	    """
 	)
-	
+# Mostrar el contenido HTML usando el componente HTML
+components.html(html_code)	
 # Footer
 st.markdown("<p class='highlight' style='color:red;'>© Equipo#1 2023-1 Análisis de Datos Hidrometeorológicos. Todos los derechos reservados.</p>",
 unsafe_allow_html=True)
+
