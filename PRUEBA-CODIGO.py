@@ -37,6 +37,14 @@ st.markdown(
             font-size: 14px;
             color: red;
         }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+# Estilo de la página
+st.markdown(
+    """
+    <style>
         body {
             background-color: rgb(155, 222, 157);
             color: rgb(22, 21, 21);
