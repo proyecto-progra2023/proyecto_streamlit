@@ -22,7 +22,7 @@ st.markdown(
         .big-font {
             font-size: 24px;
             font-weight: bold;
-            color: #3366FF;
+            color: red;
             text-align: center;
             padding-bottom: 20px;
             font-family:cursive; 
