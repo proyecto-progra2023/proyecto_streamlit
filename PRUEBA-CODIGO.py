@@ -67,9 +67,8 @@ selected_tab = st.sidebar.selectbox('Selecciona una pestaña', tabs)
 if selected_tab == 'Nosotros':
     # Encabezado
     # Leer el contenido del archivo HTML
-	with open("index.html", "r") as file:
-    		html_code = file.read()
-
+    with open("index.html", "r") as file:
+	html_code = file.read()
     st.markdown('<p style="text-align: center; font-size: 24px; font-weight: bold;">“Año de la unidad, la paz y el desarrollo”</p>', unsafe_allow_html=True)
     st.header('Universidad Peruana Cayetano Heredia')
     st.subheader('Curso:')
@@ -91,7 +90,8 @@ if selected_tab == 'Nosotros':
     st.markdown("""
     Si tienes alguna pregunta o comentario, no dudes en ponerte en contacto con nosotros. Estamos aquí para ayudarte.
     """)
-
+    # Mostrar el contenido HTML usando el componente HTML
+    components.html(html_code)
     redes_contacto = ['Email', 'Teléfono', 'Whatsapp']
     red_seleccionada = st.selectbox('Elige la red de contacto', redes_contacto)
 
@@ -115,8 +115,6 @@ if selected_tab == 'Nosotros':
 	    for whatsapp in numeros_whatsapp:
 		    st.write(f'📲 [{whatsapp}](https://wa.me/{whatsapp})')
 
-    # Mostrar el contenido HTML usando el componente HTML
-    components.html(html_code)
 else:
 	st.markdown("<h1 class='big-font'>Análisis de Datos Hidrometeorológicos [Gobierno Regional Piura]</h1>", unsafe_allow_html=True)
 	st.markdown(
