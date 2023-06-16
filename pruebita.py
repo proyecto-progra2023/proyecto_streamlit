@@ -83,7 +83,7 @@ if selected_tab == 'Nosotros':
     st.write('- Armas Castañeda Darlin Alberto')
     st.write('- Guerrero Suarez Cecilia')
     st.write('- Portugal Torres Jorge Alexander')
-    st.write('- Lima Quispe Nancy Alexandra')
+    st.write('- Lima Quispe Alexandra Nancy')
 
     st.subheader('Profesores:')
     st.write('- Moltalvo Garcia Peter Jonathan')
