@@ -44,7 +44,7 @@ st.markdown(
 background_color = """
 <style>
 body {
-    background-color: rgb(155, 222, 157);
+    background-color: red;
     color: rgb(22, 21, 21);
 }
 </style>
