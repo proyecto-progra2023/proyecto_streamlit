@@ -41,6 +41,18 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+background_color = """
+<style>
+body {
+    background-color: rgb(155, 222, 157);
+    color: rgb(22, 21, 21);
+}
+</style>
+"""
+# Mostrar el color de fondo en la aplicación
+st.markdown(background_color, unsafe_allow_html=True)
+
+
 
 # Cargar y mostrar el logo
 logo = Image.open('Logo_Oficiall.png')
