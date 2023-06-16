@@ -462,5 +462,5 @@ else:
 	)
 	
 # Footer
-st.markdown("<p class='highlight' style='color: blue;'>© Equipo#1 2023-1 Análisis de Datos Hidrometeorológicos. Todos los derechos reservados.</p>",
+st.markdown("<p class='highlight' style='color:red;'>© Equipo#1 2023-1 Análisis de Datos Hidrometeorológicos. Todos los derechos reservados.</p>",
 unsafe_allow_html=True)
