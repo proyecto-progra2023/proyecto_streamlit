@@ -73,6 +73,7 @@ selected_tab = st.sidebar.selectbox('Selecciona una pestaña', tabs)
 
 if selected_tab == 'Nosotros':
     # Encabezado
+    st.code("
     st.markdown('<p style="text-align: center; font-size: 24px; font-weight: bold;">“Año de la unidad, la paz y el desarrollo”</p>', unsafe_allow_html=True)
     st.header('Universidad Peruana Cayetano Heredia')
     st.subheader('Curso:')
@@ -117,6 +118,7 @@ if selected_tab == 'Nosotros':
 	    st.write(' Envíanos un mensaje por Whatsapp y te responderemos lo antes posible:')
 	    for whatsapp in numeros_whatsapp:
 		    st.write(f'📲 [{whatsapp}](https://wa.me/{whatsapp})')
+    ")
 
 
 else:
