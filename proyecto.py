@@ -28,7 +28,7 @@ st.markdown(
             font-family:cursive; 
         }
         .highlight {
-            background-color: gray;
+            background-color: darkslategrey;
             padding: 10px;
             border-radius: 10px;
         }
