@@ -25,7 +25,7 @@ st.markdown(
             color: red;
             text-align: center;
             padding-bottom: 20px;
-            font-family:cursive; 
+            font-family: cursive;
         }
         .highlight {
             background-color: darkslategrey;
@@ -33,26 +33,23 @@ st.markdown(
             border-radius: 10px;
         }
         code {
-            font-family: 'Arial', sans-serif; 
+            font-family: 'Arial', sans-serif;
             font-size: 14px;
             color: red;
+        }
+        body {
+            background-color: red;
+            color: rgb(22, 21, 21);
         }
     </style>
     """,
     unsafe_allow_html=True
 )
-background_color = """
-<style>
-body {
-    background-color: red;
-    color: rgb(22, 21, 21);
-}
-</style>
-"""
-# Mostrar el color de fondo en la aplicación
-st.markdown(background_color, unsafe_allow_html=True)
 
-
+# Contenido de la aplicación
+st.markdown("<p class='big-font'>Título de la aplicación</p>", unsafe_allow_html=True)
+st.markdown("<div class='highlight'>Este es un texto resaltado.</div>", unsafe_allow_html=True)
+st.code("print('Hola, mundo!')")
 
 # Cargar y mostrar el logo
 logo = Image.open('Logo_Oficiall.png')
