@@ -35,7 +35,7 @@ st.markdown(
         code {
             font-family: 'Arial', sans-serif; 
             font-size: 14px;
-            color: #FF0000;
+            color: red;
         }
     </style>
     """,
