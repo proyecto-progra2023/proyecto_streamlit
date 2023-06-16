@@ -58,7 +58,7 @@ st.markdown(
 # Contenido de la aplicación
 st.markdown('<div class="custom-container">', unsafe_allow_html=True)
 st.markdown("<p class='big-font'>Título de la aplicación</p>", unsafe_allow_html=True)
-st.markdown("<div class='highlight'>Este es un texto resaltado.</div>", unsafe_allow_html=True)
+st.markdown("Este es un texto resaltado")
 st.code("print('Hola, mundo!')")
 st.markdown('</div>', unsafe_allow_html=True)
 # Cargar y mostrar el logo
