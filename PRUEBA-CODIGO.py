@@ -14,7 +14,14 @@ from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.dates as mdates
 from matplotlib.widgets import RangeSlider
 from PIL import Image
+import streamlit.components.v1 as components
 
+# Leer el contenido del archivo HTML
+with open("index.html", "r") as file:
+    html_code = file.read()
+
+# Mostrar el contenido HTML usando el componente HTML
+components.html(html_code)
 # Contenido de la aplicación
 st.markdown(
     """
