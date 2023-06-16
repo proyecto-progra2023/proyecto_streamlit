@@ -38,14 +38,13 @@ st.markdown(
             color: red;
         }
         body {
-            background-color: red;
+            background-color: rgb(155, 222, 157);
             color: rgb(22, 21, 21);
         }
     </style>
     """,
     unsafe_allow_html=True
 )
-
 # Contenido de la aplicación
 st.markdown("<p class='big-font'>Título de la aplicación</p>", unsafe_allow_html=True)
 st.markdown("<div class='highlight'>Este es un texto resaltado.</div>", unsafe_allow_html=True)
