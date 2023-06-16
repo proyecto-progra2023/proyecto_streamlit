@@ -16,10 +16,6 @@ from matplotlib.widgets import RangeSlider
 from PIL import Image
 import streamlit.components.v1 as components
 
-# Leer el contenido del archivo HTML
-with open("index.html", "r") as file:
-    html_code = file.read()
-
 # Contenido de la aplicación
 st.markdown(
     """
@@ -70,6 +66,10 @@ selected_tab = st.sidebar.selectbox('Selecciona una pestaña', tabs)
 
 if selected_tab == 'Nosotros':
     # Encabezado
+    # Leer el contenido del archivo HTML
+	with open("index.html", "r") as file:
+    		html_code = file.read()
+
     st.markdown('<p style="text-align: center; font-size: 24px; font-weight: bold;">“Año de la unidad, la paz y el desarrollo”</p>', unsafe_allow_html=True)
     st.header('Universidad Peruana Cayetano Heredia')
     st.subheader('Curso:')
@@ -115,7 +115,8 @@ if selected_tab == 'Nosotros':
 	    for whatsapp in numeros_whatsapp:
 		    st.write(f'📲 [{whatsapp}](https://wa.me/{whatsapp})')
 
-
+    # Mostrar el contenido HTML usando el componente HTML
+    components.html(html_code)
 else:
 	st.markdown("<h1 class='big-font'>Análisis de Datos Hidrometeorológicos [Gobierno Regional Piura]</h1>", unsafe_allow_html=True)
 	st.markdown(
@@ -472,9 +473,7 @@ else:
 	    
 	    ¡Diviértete explorando los datos hidrometeorológicos y descubre nuevos conocimientos!
 	    """
-	)
-# Mostrar el contenido HTML usando el componente HTML
-components.html(html_code)	
+	)	
 # Footer
 st.markdown("<p class='highlight' style='color:red;'>© Equipo#1 2023-1 Análisis de Datos Hidrometeorológicos. Todos los derechos reservados.</p>",
 unsafe_allow_html=True)
