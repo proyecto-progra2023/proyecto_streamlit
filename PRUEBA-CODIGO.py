@@ -42,13 +42,13 @@ st.markdown(
     unsafe_allow_html=True
 )
 # Estilo de la página
-st.markdown(
-    """
+st.write(
+    f"""
     <style>
-        body {
+        body {{
             background-color: rgb(155, 222, 157);
             color: rgb(22, 21, 21);
-        }
+        }}
     </style>
     """,
     unsafe_allow_html=True
