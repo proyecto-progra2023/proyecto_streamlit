@@ -247,21 +247,6 @@ else:
 		ax.set_title('Distribución de Estaciones por Tipo')
 		st.pyplot(fig)
 
-	st.subheader("Slider para Filtrar por Fecha")
-
-	fecha_min = pd.to_datetime(df['FECHA_MUESTRA'],).min()
-	fecha_max = pd.to_datetime(df['FECHA_MUESTRA'],).max()
-
-	fecha_inicio = st.date_input('Seleccione la fecha de inicio', value=fecha_min, min_value=fecha_min, max_value=fecha_max)
-	fecha_fin = st.date_input('Seleccione la fecha de fin', value=fecha_max, min_value=fecha_min, max_value=fecha_max)
-
-	if fecha_inicio <= fecha_fin:
-	    df_filtrado = df[(df['FECHA_MUESTRA'] >= fecha_inicio.strftime('%Y%m%d')) & (df['FECHA_MUESTRA'] <= fecha_fin.strftime('%Y%m%d'))]
-	    # Luego puedes utilizar el DataFrame filtrado para generar gráficos u otras visualizaciones
-	else:
-	    st.warning('Seleccione fechas válidas')
-
-
 	st.subheader("prcipitacion maxima")
 	fig, ax = plt.subplots()
 	ax.scatter(df['MAXIMA24H'], df['PRECIP24H'])
@@ -269,6 +254,19 @@ else:
 	ax.set_ylabel('Precipitación en 24 horas')
 	ax.set_title('Caudal máximo vs. Precipitación en 24 horas')
 	st.pyplot(fig)
+
+
+	# Variable para guardar el estado del botón
+	show_button = False
+	
+	# Botón deslizable
+	if st.button("Mostrar/Ocultar"):
+	    show_button = not show_button
+	
+	# Mostrar el botón si la variable show_button es True
+	if show_button:
+	    st.button("¡Hola, soy un botón!")
+
 
 
 	promedio_caudal_por_provincia = df.groupby(['PROVINCIA','DISTRITO'])['PROMEDIO24H'].mean().unstack()
