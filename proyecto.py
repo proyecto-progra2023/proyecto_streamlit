@@ -256,18 +256,6 @@ else:
 	st.pyplot(fig)
 
 
-	# Variable para guardar el estado del botón
-	show_button = False
-	
-	# Botón deslizable
-	if st.button("Mostrar/Ocultar"):
-	    show_button = not show_button
-	
-	# Mostrar el botón si la variable show_button es True
-	if show_button:
-	    st.button("¡Hola, soy un botón!")
-
-
 
 	promedio_caudal_por_provincia = df.groupby(['PROVINCIA','DISTRITO'])['PROMEDIO24H'].mean().unstack()
 	fig, ax = plt.subplots()
@@ -277,6 +265,20 @@ else:
 	ax.set_title('Promedio de Caudal por Provincia Y Distrito')
 	plt.xticks(rotation=45)
 	st.pyplot(fig)
+# Calcular el promedio de caudal por provincia y distrito
+promedio_caudal_por_provincia = df.groupby(['PROVINCIA', 'DISTRITO'])['PROMEDIO24H'].mean().unstack()
+
+	with st.expander("Promedio de caudal por provincia y distrito"):
+	    # Crear el gráfico de barras
+	    fig, ax = plt.subplots()
+	    promedio_caudal_por_provincia.plot(kind='bar', ax=ax)
+	    ax.set_xlabel('Provincia')
+	    ax.set_ylabel('Promedio de Caudal')
+	    ax.set_title('Promedio de Caudal por Provincia y Distrito')
+	    plt.xticks(rotation=45)
+	
+	    # Mostrar el gráfico en la aplicación
+	    st.pyplot(fig)
 
 	promedio_caudal_por_provincia = df.groupby(['DEPARTAMENTO', 'PROVINCIA'])['PROMEDIO24H'].mean().unstack()
 	fig, ax = plt.subplots()
