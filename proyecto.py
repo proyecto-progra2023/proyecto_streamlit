@@ -262,7 +262,7 @@ else:
 	    st.warning('Seleccione fechas válidas')
 
 
-
+	st.subheader("prcipitacion maxima")
 	fig, ax = plt.subplots()
 	ax.scatter(df['MAXIMA24H'], df['PRECIP24H'])
 	ax.set_xlabel('Máxima en 24 horas')
