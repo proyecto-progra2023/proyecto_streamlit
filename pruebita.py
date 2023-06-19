@@ -55,6 +55,16 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
+# Cargar y mostrar el logo
+logo = Image.open('Logo_Oficiall.png')
+st.sidebar.image(logo)
+# Ruta del archivo CSV
+ruta_csv ="DATOS_HIDROMETEREOLOGICOS_GORE_PIURA_4.csv"
+
+# Encabezado
+
+st.markdown('<p style="text-align: center; font-size: 24px; font-weight: bold;">“Año de la unidad, la paz y el desarrollo”</p>', unsafe_allow_html=True)
 # Campo de búsqueda
 search_query = st.text_input('Buscar', '')
 
@@ -68,16 +78,6 @@ if search_button:
 
 # Resultados de la búsqueda
 st.header('Resultados de la búsqueda')
-# Cargar y mostrar el logo
-logo = Image.open('Logo_Oficiall.png')
-st.sidebar.image(logo)
-# Ruta del archivo CSV
-ruta_csv ="DATOS_HIDROMETEREOLOGICOS_GORE_PIURA_4.csv"
-
-# Encabezado
-
-st.markdown('<p style="text-align: center; font-size: 24px; font-weight: bold;">“Año de la unidad, la paz y el desarrollo”</p>', unsafe_allow_html=True)
-
 # Lee el archivo CSV en un DataFrame
 df = pd.read_csv(ruta_csv, encoding='latin-1')
 ###################################################################################
