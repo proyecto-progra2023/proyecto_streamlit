@@ -466,7 +466,8 @@ else:
 	    
 	    ¡Diviértete explorando los datos hidrometeorológicos y descubre nuevos conocimientos!
 	    """
-	)	
+	)
+st.write("aquiiiii")
 # Agrupar por provincia y distrito y calcular el promedio de caudal
 promedio_caudal_por_provincia = df.groupby(['PROVINCIA', 'DISTRITO'])['PROMEDIO24H'].mean().unstack()
 
