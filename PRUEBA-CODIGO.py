@@ -482,13 +482,19 @@ st.pyplot(fig)
 
 # Selecciona la columna que deseas graficar
 st.header("probando")
+
+columnas = ['MAXIMA24H', 'PRECIP24H', 'CAUDAL07H']
+
 # Crea una figura y ejes
 fig, ax = plt.subplots()
-# Grafica el gráfico de caja y bigotes
-ax.boxplot(df['CAUDAL07H'])
-# Configura el título y etiqueta del eje x
-ax.set_title('Distribución de Caudal en 07 horas')
-ax.set_xticklabels(['CAUDAL07H'])
+
+# Grafica el gráfico de barras apiladas
+df[columnas].plot(kind='bar', stacked=True, ax=ax)
+
+# Configura los títulos y etiquetas de los ejes
+ax.set_xlabel('Índice de datos')
+ax.set_ylabel('Valores')
+ax.set_title('Comparación de Máxima, Precipitación y Caudal')
 # Muestra el gráfico
 st.pyplot(fig)
 # Footer
