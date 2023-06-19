@@ -63,17 +63,7 @@ df = pd.read_csv(ruta_csv, encoding='latin-1')
 
 tabs = ['Nosotros', 'Datos Hidrometereológicos']
 selected_tab = st.sidebar.selectbox('Selecciona una pestaña', tabs)
-# Agrupar por provincia y distrito y calcular el promedio de caudal
-promedio_caudal_por_provincia = df.groupby(['PROVINCIA', 'DISTRITO'])['PROMEDIO24H'].mean().unstack()
 
-# Crear gráfico de barras agrupadas
-fig, ax = plt.subplots()
-promedio_caudal_por_provincia.plot(kind='bar', ax=ax)
-ax.set_xlabel('Provincia')
-ax.set_ylabel('Promedio de Caudal')
-ax.set_title('Promedio de Caudal por Provincia y Distrito')
-plt.xticks(rotation=45)
-plt.show()
 if selected_tab == 'Nosotros':
     # Encabezado
     st.markdown('<p style="text-align: center; font-size: 24px; font-weight: bold;">“Año de la unidad, la paz y el desarrollo”</p>', unsafe_allow_html=True)
@@ -477,6 +467,17 @@ else:
 	    ¡Diviértete explorando los datos hidrometeorológicos y descubre nuevos conocimientos!
 	    """
 	)	
+# Agrupar por provincia y distrito y calcular el promedio de caudal
+promedio_caudal_por_provincia = df.groupby(['PROVINCIA', 'DISTRITO'])['PROMEDIO24H'].mean().unstack()
+
+# Crear gráfico de barras agrupadas
+fig, ax = plt.subplots()
+promedio_caudal_por_provincia.plot(kind='bar', ax=ax)
+ax.set_xlabel('Provincia')
+ax.set_ylabel('Promedio de Caudal')
+ax.set_title('Promedio de Caudal por Provincia y Distrito')
+plt.xticks(rotation=45)
+plt.show()
 # Footer
 st.markdown("<p class='highlight' style='color:red;'>© Equipo#1 2023-1 Análisis de Datos Hidrometeorológicos. Todos los derechos reservados.</p>",
 unsafe_allow_html=True)
