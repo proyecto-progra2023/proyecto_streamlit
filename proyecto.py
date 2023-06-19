@@ -45,6 +45,17 @@ st.markdown(
 # Cargar y mostrar el logo
 logo = Image.open('Logo_Oficiall.png')
 st.sidebar.image(logo)
+
+# Campo de búsqueda
+search_query = st.text_input('Buscar', '')
+# Botón de búsqueda
+search_button = st.button('Buscar')
+# Verificación de la búsqueda
+if search_button:
+    st.write('Realizando búsqueda...')
+
+# Resultados de la búsqueda
+st.header('Resultados de la búsqueda')
 # Ruta del archivo CSV
 ruta_csv ="DATOS_HIDROMETEREOLOGICOS_GORE_PIURA_4.csv"
 
