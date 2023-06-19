@@ -333,23 +333,6 @@ else:
 	plt.xticks(rotation=45)
 	st.pyplot(fig)
 
-
-
-
-	caudal_por_estacion = df.groupby('ESTACION')['PROMEDIO24H'].mean()
-
-	fig, ax = plt.subplots(figsize=(12, 6))  # Ajustamos el tamaño del gráfico
-
-	ax.plot(caudal_por_estacion.index, caudal_por_estacion.values)
-	ax.set_xlabel('Estación')
-	ax.set_ylabel('Caudal promedio en 24 horas')
-	ax.set_title('Caudal promedio en 24 horas - Comparación entre Estaciones')
-	ax.set_xticklabels(caudal_por_estacion.index, rotation=45, fontsize=8)  # Ajustamos el tamaño de fuente de las etiquetas
-
-	st.pyplot(fig)
-
-
-
 	# Convertir la columna 'Fecha' en formato de fecha
 	df['FECHA_MUESTRA'] = pd.to_datetime(df['FECHA_MUESTRA'])
 
