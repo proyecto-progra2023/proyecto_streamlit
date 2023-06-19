@@ -255,17 +255,7 @@ else:
 		ax.set_title('Caudal máximo vs. Precipitación en 24 horas')
 		st.pyplot(fig)
 
-
-
-	promedio_caudal_por_provincia = df.groupby(['PROVINCIA','DISTRITO'])['PROMEDIO24H'].mean().unstack()
-	fig, ax = plt.subplots()
-	promedio_caudal_por_provincia.plot(kind='bar', ax=ax)
-	ax.set_xlabel('Provincia')
-	ax.set_ylabel('Promedio de Caudal')
-	ax.set_title('Promedio de Caudal por Provincia Y Distrito')
-	plt.xticks(rotation=45)
-	st.pyplot(fig)
-# Calcular el promedio de caudal por provincia y distrito
+	# Calcular el promedio de caudal por provincia y distrito
 	promedio_caudal_por_provincia = df.groupby(['PROVINCIA', 'DISTRITO'])['PROMEDIO24H'].mean().unstack()
 
 	with st.expander("Promedio de caudal por provincia y distrito"):
@@ -280,37 +270,6 @@ else:
 	    # Mostrar el gráfico en la aplicación
 	    st.pyplot(fig)
 
-	promedio_caudal_por_provincia = df.groupby(['DEPARTAMENTO', 'PROVINCIA'])['PROMEDIO24H'].mean().unstack()
-	fig, ax = plt.subplots()
-	promedio_caudal_por_provincia.plot(kind='bar', ax=ax)
-	ax.set_xlabel('Departamento')
-	ax.set_ylabel('Promedio de Caudal')
-	ax.set_title('Promedio de Caudal por Departamento y Provincia')
-	plt.xticks(rotation=45)
-	st.pyplot(fig)
-
-
-	estaciones_seleccionadas = ['Estación 1', 'Estación 2', 'Estación 3']
-	df_estaciones_seleccionadas = df[df['ESTACION'].isin(estaciones_seleccionadas)]
-	fig, ax = plt.subplots()
-	for estacion in estaciones_seleccionadas:
-	    datos_estacion = df_estaciones_seleccionadas[df_estaciones_seleccionadas['ESTACION'] == estacion]
-	    ax.plot(datos_estacion['FECHA_MUESTRA'], datos_estacion['PROMEDIO24H'], label=estacion)
-	ax.set_xlabel('Fecha muestra')
-	ax.set_ylabel('Caudal promedio en 24 horas')
-	ax.set_title('Caudal promedio en 24 horas - Comparación entre estaciones')
-	plt.xticks(rotation=45)
-	ax.legend()
-	st.pyplot(fig)
-
-
-
-	tipos_estacion_por_departamento = df.groupby(['DEPARTAMENTO', 'TIPO_ESTACION']).size().unstack()
-	fig, ax = plt.subplots()
-	tipos_estacion_por_departamento.plot(kind='pie', ax=ax, subplots=True, figsize=(10, 10))
-	ax.set_title('Distribución de Tipos de Estación por Departamento')
-	st.pyplot(fig)
-
 
 
 	df['AÑO'] = df['FECHA_MUESTRA'].dt.year
@@ -323,42 +282,6 @@ else:
 	st.pyplot(fig)
 
 
-
-	caudal_por_tipo_estacion = df.groupby('TIPO_ESTACION')['PROMEDIO24H'].mean()
-	fig, ax = plt.subplots()
-	ax.stackplot(caudal_por_tipo_estacion.index, caudal_por_tipo_estacion.values)
-	ax.set_xlabel('Tipo de Estación')
-	ax.set_ylabel('Caudal promedio en 24 horas')
-	ax.set_title('Caudal promedio en 24 horas por Tipo de Estación')
-	plt.xticks(rotation=45)
-	st.pyplot(fig)
-
-	# Convertir la columna 'Fecha' en formato de fecha
-	df['FECHA_MUESTRA'] = pd.to_datetime(df['FECHA_MUESTRA'])
-
-	# Crear un slider para seleccionar el mes
-	mes_seleccionado = st.slider('Seleccione un mes', 1, 12, 1)
-
-	# Filtrar los datos por mes seleccionado
-	df_filtrado = df[df['FECHA_MUESTRA'].dt.month == mes_seleccionado]
-
-	# Crear figura y eje
-	fig, ax = plt.subplots()
-
-	# Realizar acciones de trazado en el eje
-	ax.plot(df_filtrado['FECHA_MUESTRA'], df_filtrado['MAXIMA24H'])
-
-	# Configurar etiquetas y título del gráfico
-	ax.set_xlabel('Fecha')
-	ax.set_ylabel('Precipitación')
-	ax.set_title('Precipitación por fecha')
-
-	# Mostrar el gráfico en Streamlit
-	st.pyplot(fig)
-
-
-	# Leer el archivo CSV
-	df = pd.read_csv(ruta_csv, encoding='latin-1')
 
 	# Convertir la columna 'FECHA_MUESTRA' al formato adecuado
 	df['FECHA_MUESTRA'] = pd.to_datetime(df['FECHA_MUESTRA'], format='%Y%m%d')
