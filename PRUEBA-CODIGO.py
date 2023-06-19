@@ -468,17 +468,7 @@ else:
 	    """
 	)
 st.write("aquiiiii")
-# Agrupar por provincia y distrito y calcular el promedio de caudal
-promedio_caudal_por_provincia = df.groupby(['PROVINCIA', 'DISTRITO'])['PROMEDIO24H'].mean().unstack()
 
-# Crear gráfico de barras agrupadas
-fig, ax = plt.subplots()
-promedio_caudal_por_provincia.plot(kind='bar', ax=ax)
-ax.set_xlabel('Provincia')
-ax.set_ylabel('Promedio de Caudal')
-ax.set_title('Promedio de Caudal por Provincia y Distrito')
-plt.xticks(rotation=45)
-st.pyplot(fig)
 
 # Selecciona la columna que deseas graficar
 st.header("probando")
