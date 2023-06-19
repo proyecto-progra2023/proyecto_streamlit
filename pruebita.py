@@ -477,11 +477,18 @@ else:
 		)
 # Título de la aplicación
 st.title('Mi Aplicación')
+# Título de la aplicación
+st.title('Mi Aplicación')
+
 # Campo de búsqueda
 search_query = st.text_input('Buscar', '')
 
 # Botón de búsqueda con icono de lupa
-search_button = st.button('<i class="fas fa-search"></i> Buscar', unsafe_allow_html=True)
+search_button = components.html("""
+    <button>
+        <i class="fas fa-search"></i> Buscar
+    </button>
+""")
 
 # Verificación de la búsqueda
 if search_button:
