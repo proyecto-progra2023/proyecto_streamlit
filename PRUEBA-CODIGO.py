@@ -11,6 +11,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from datetime import date
 from mpl_toolkits.mplot3d import Axes3D
+
 import matplotlib.dates as mdates
 from matplotlib.widgets import RangeSlider
 from PIL import Image
@@ -485,7 +486,22 @@ ax.set_title('Relación entre Precipitación, Promedio de Caudal y Máxima Cauda
 st.pyplot(fig)
 st.write("fin")
 
+# Crear una figura y ejes 3D
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
 
+# Graficar el gráfico de dispersión 3D
+ax.scatter(df['MAXIMA24H'], df['PRECIP24H'], df['PROMEDIO24H'])
+
+# Configurar los títulos y etiquetas de los ejes
+ax.set_xlabel('Máxima en 24 horas')
+ax.set_ylabel('Precipitación en 24 horas')
+ax.set_zlabel('Promedio de Caudal')
+ax.set_title('Relación entre Máxima en 24 horas, Precipitación en 24 horas y Promedio de Caudal por Estación')
+
+# Mostrar el gráfico 3D interactivo
+# Crear una figura y ejes 3D
+fig = plt.figure()
 
 # Footer
 st.markdown("<p class='highlight' style='color:red;'>© Equipo#1 2023-1 Análisis de Datos Hidrometeorológicos. Todos los derechos reservados.</p>",
