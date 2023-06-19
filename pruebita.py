@@ -477,12 +477,16 @@ else:
 		)
 # Título de la aplicación
 st.title('Mi Aplicación')
+# Campo de búsqueda
+search_query = st.text_input('Buscar', '')
 
-TypeError: This app has encountered an error. The original error message is redacted to prevent data leaks. Full error details have been recorded in the logs (if you're on Streamlit Cloud, click on 'Manage app' in the lower right of your app).
-Traceback:
-File "/home/appuser/venv/lib/python3.9/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 552, in _run_script
-    exec(code, module.__dict__)
-File "/app/proyecto_streamly/pruebita.py", line 72, in <module>
-    search_button = st.button('<i class="fas fa-search"></i> Buscar', unsafe_allow_html=True)
-File "/home/appuser/venv/lib/python3.9/site-packages/streamlit/runtime/metrics_util.py", line 356, in wrapped_func
-    result = non_optional_func(*args, **kwargs)
+# Botón de búsqueda con icono de lupa
+search_button = st.button('<i class="fas fa-search"></i> Buscar', unsafe_allow_html=True)
+
+# Verificación de la búsqueda
+if search_button:
+    st.write('Realizando búsqueda...')
+    # Aquí puedes agregar la lógica para procesar la búsqueda
+
+# Resultados de la búsqueda
+st.header('Resultados de la búsqueda')
