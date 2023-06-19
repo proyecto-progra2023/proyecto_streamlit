@@ -486,11 +486,11 @@ st.header("probando")
 fig, ax = plt.subplots()
 
 # Grafica el gráfico de caja y bigotes
-ax.boxplot(df[CAUDAL07H])
+ax.boxplot(df['CAUDAL07H'])
 
 # Configura el título y etiqueta del eje x
 ax.set_title('Distribución de Caudal en 07 horas')
-ax.set_xticklabels([columna])
+ax.set_xticklabels(['CAUDAL07H'])
 
 # Muestra el gráfico
 plt.show()
