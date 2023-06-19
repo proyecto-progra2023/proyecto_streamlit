@@ -478,22 +478,19 @@ ax.set_xlabel('Provincia')
 ax.set_ylabel('Promedio de Caudal')
 ax.set_title('Promedio de Caudal por Provincia y Distrito')
 plt.xticks(rotation=45)
-plt.show()
+st.pyplot(fig)
 
 # Selecciona la columna que deseas graficar
 st.header("probando")
 # Crea una figura y ejes
 fig, ax = plt.subplots()
-
 # Grafica el gráfico de caja y bigotes
 ax.boxplot(df['CAUDAL07H'])
-
 # Configura el título y etiqueta del eje x
 ax.set_title('Distribución de Caudal en 07 horas')
 ax.set_xticklabels(['CAUDAL07H'])
-
 # Muestra el gráfico
-plt.show()
+st.pyplot(fig)
 # Footer
 st.markdown("<p class='highlight' style='color:red;'>© Equipo#1 2023-1 Análisis de Datos Hidrometeorológicos. Todos los derechos reservados.</p>",
 unsafe_allow_html=True)
