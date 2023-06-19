@@ -46,21 +46,29 @@ st.markdown(
 logo = Image.open('Logo_Oficiall.png')
 st.sidebar.image(logo)
 
-# Campo de búsqueda
-search_query = st.text_input('Buscar', '')
-# Botón de búsqueda
-search_button = st.button('Buscar')
-# Verificación de la búsqueda
-if search_button:
-    st.write('Realizando búsqueda...')
 
-# Resultados de la búsqueda
-st.header('Resultados de la búsqueda')
 # Ruta del archivo CSV
 ruta_csv ="DATOS_HIDROMETEREOLOGICOS_GORE_PIURA_4.csv"
 
 # Lee el archivo CSV en un DataFrame
 df = pd.read_csv(ruta_csv, encoding='latin-1')
+
+# Campo de búsqueda
+search_query = st.text_input('Buscar', '')
+
+# Botón de búsqueda
+search_button = st.button('Buscar')
+
+# Verificación de la búsqueda
+if search_button:
+    st.write('Realizando búsqueda...')
+    # Filtrar el DataFrame según el campo de búsqueda
+    results = df[df['Nombre'].str.contains(search_query, case=False)]
+    # Mostrar los resultados de la búsqueda
+    if not results.empty:
+        st.table(results)
+    else:
+        st.write('No se encontraron resultados.')
 ###################################################################################
 
 tabs = ['Nosotros', 'Datos Hidrometereológicos']
