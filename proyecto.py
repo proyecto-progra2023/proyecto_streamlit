@@ -247,13 +247,13 @@ else:
 		ax.set_title('Distribución de Estaciones por Tipo')
 		st.pyplot(fig)
 
-	st.subheader("prcipitacion maxima")
-	fig, ax = plt.subplots()
-	ax.scatter(df['MAXIMA24H'], df['PRECIP24H'])
-	ax.set_xlabel('Máxima en 24 horas')
-	ax.set_ylabel('Precipitación en 24 horas')
-	ax.set_title('Caudal máximo vs. Precipitación en 24 horas')
-	st.pyplot(fig)
+	with st.expander("precipitacion maxima"):
+		fig, ax = plt.subplots()
+		ax.scatter(df['MAXIMA24H'], df['PRECIP24H'])
+		ax.set_xlabel('Máxima en 24 horas')
+		ax.set_ylabel('Precipitación en 24 horas')
+		ax.set_title('Caudal máximo vs. Precipitación en 24 horas')
+		st.pyplot(fig)
 
 
 
