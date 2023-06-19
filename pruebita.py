@@ -55,7 +55,19 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+# Campo de búsqueda
+search_query = st.text_input('Buscar', '')
 
+# Botón de búsqueda con icono de lupa
+search_button = st.button('<i class="fas fa-search"></i> Buscar', unsafe_allow_html=True)
+
+# Verificación de la búsqueda
+if search_button:
+    st.write('Realizando búsqueda...')
+    # Aquí puedes agregar la lógica para procesar la búsqueda
+
+# Resultados de la búsqueda
+st.header('Resultados de la búsqueda')
 # Cargar y mostrar el logo
 logo = Image.open('Logo_Oficiall.png')
 st.sidebar.image(logo)
