@@ -463,6 +463,17 @@ else:
 	st.pyplot(fig)
 
 
+	st.markdown(
+	    """
+	    
+	    ¡Diviértete explorando los datos hidrometeorológicos y descubre nuevos conocimientos!
+	    """
+	)
+	# Footer
+	st.markdown(
+		"<p class='highlight' style='color: blue;'>© Darlin Armas_2023 Análisis de Datos Hidrometeorológicos. Todos los derechos reservados.</p>",
+		unsafe_allow_html=True
+		)
 # Título de la aplicación
 st.title('Mi Aplicación')
 
@@ -479,14 +490,3 @@ if search_button:
 
 # Resultados de la búsqueda
 st.header('Resultados de la búsqueda')
-	st.markdown(
-	    """
-	    
-	    ¡Diviértete explorando los datos hidrometeorológicos y descubre nuevos conocimientos!
-	    """
-	)
-	# Footer
-	st.markdown(
-		"<p class='highlight' style='color: blue;'>© Darlin Armas_2023 Análisis de Datos Hidrometeorológicos. Todos los derechos reservados.</p>",
-		unsafe_allow_html=True
-		)
