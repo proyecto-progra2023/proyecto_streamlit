@@ -90,14 +90,14 @@ if selected_tab == 'Nosotros':
 
 
     elif red_seleccionada == 'Teléfono':
-	    telefonos = ['+51931001223','9999999999999','99999999999','8888888897']
+	    telefonos = ['+51931001223','+51916727662','+51964388089','+51988954149']
 	    st.write(f'Llámanos al nuestros números telefónicos para obtener asistencia inmediata:')
 	    for telefono in telefonos:
 		    st.write(f'📞 [{telefono}](tel:{telefono})')
 
 
     elif red_seleccionada == 'Whatsapp':
-	    numeros_whatsapp = ['+51931001223', '9999999999999', '99999999999', '8888888897']
+	    numeros_whatsapp = ['+51931001223', '+51916727662','+51964388089','+51988954149']
 	    st.write(' Envíanos un mensaje por Whatsapp y te responderemos lo antes posible:')
 	    for whatsapp in numeros_whatsapp:
 		    st.write(f'📲 [{whatsapp}](https://wa.me/{whatsapp})')
