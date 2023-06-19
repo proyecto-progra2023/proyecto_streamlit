@@ -517,6 +517,21 @@ plt.xticks(rotation=45)
 # Muestra el gráfico
 st.pyplot(fig)
 
+
+# Crea una figura y ejes
+fig, ax = plt.subplots()
+
+# Grafica la evolución del CAUDAL07H a lo largo de las FECHA_MUESTRA
+ax.plot(df['FECHA_MUESTRA'], df['CAUDAL07H'])
+
+# Configura los títulos y etiquetas de los ejes
+ax.set_xlabel('Fecha de muestra')
+ax.set_ylabel('Caudal en 07 horas')
+ax.set_title('Evolución del Caudal en 07 horas a lo largo del tiempo')
+
+# Rota las etiquetas del eje x para una mejor legibilidad
+plt.xticks(rotation=45)
+st.pyplot(fig)
 # Footer
 st.markdown("<p class='highlight' style='color:red;'>© Equipo#1 2023-1 Análisis de Datos Hidrometeorológicos. Todos los derechos reservados.</p>",
 unsafe_allow_html=True)
