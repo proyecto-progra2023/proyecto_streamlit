@@ -490,14 +490,23 @@ st.write("fin")
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 
-# Graficar el gráfico de dispersión 3D
-ax.scatter(df['MAXIMA24H'], df['PRECIP24H'], df['PROMEDIO24H'])
+# Generar una malla de valores para MAXIMA24H y PRECIP24H
+maxima24h = df['MAXIMA24H']
+precip24h = df['PRECIP24H']
+X, Y = np.meshgrid(maxima24h, precip24h)
+
+# Calcular el PROMEDIO24H correspondiente a cada combinación de MAXIMA24H y PRECIP24H
+Z = df['PROMEDIO24H']
+
+# Graficar el gráfico de superficie 3D
+ax.plot_surface(X, Y, Z, cmap='viridis')
 
 # Configurar los títulos y etiquetas de los ejes
 ax.set_xlabel('Máxima en 24 horas')
 ax.set_ylabel('Precipitación en 24 horas')
 ax.set_zlabel('Promedio de Caudal')
-ax.set_title('Relación entre Máxima en 24 horas, Precipitación en 24 horas y Promedio de Caudal por Estación')
+ax.set_title('Distribución de Promedio de Caudal en función de Máxima en 24 horas y Precipitación en 24 horas por Estación')
+
 
 st.pyplot(fig)
 
