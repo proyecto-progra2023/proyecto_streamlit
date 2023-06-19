@@ -532,6 +532,23 @@ ax.set_title('Evolución del Caudal en 07 horas a lo largo del tiempo')
 # Rota las etiquetas del eje x para una mejor legibilidad
 plt.xticks(rotation=45)
 st.pyplot(fig)
+
+# Agrupa los datos por TIPO_ESTACION y calcula la suma de PRECIP24H
+suma_precip_por_tipo_estacion = df.groupby('TIPO_ESTACION')['PRECIP24H'].sum()
+
+# Crea una figura y ejes
+fig, ax = plt.subplots()
+
+# Grafica el gráfico de área
+ax.fill_between(suma_precip_por_tipo_estacion.index, suma_precip_por_tipo_estacion.values)
+
+# Configura los títulos y etiquetas de los ejes
+ax.set_xlabel('Tipo de estación')
+ax.set_ylabel('Precipitación acumulada en 24 horas')
+ax.set_title('Distribución de la Precipitación en 24 horas por Tipo de Estación')
+
+# Muestra el gráfico
+st.pyplot(fig)
 # Footer
 st.markdown("<p class='highlight' style='color:red;'>© Equipo#1 2023-1 Análisis de Datos Hidrometeorológicos. Todos los derechos reservados.</p>",
 unsafe_allow_html=True)
