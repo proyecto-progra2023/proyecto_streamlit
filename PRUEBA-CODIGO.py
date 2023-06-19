@@ -497,6 +497,26 @@ ax.set_ylabel('Valores')
 ax.set_title('Comparación de Máxima, Precipitación y Caudal')
 # Muestra el gráfico
 st.pyplot(fig)
+
+
+cuenta_por_tipo_estacion = df.groupby('TIPO_ESTACION')['CUENTA'].count()
+
+# Crea una figura y ejes
+fig, ax = plt.subplots()
+
+# Grafica el gráfico de barras
+cuenta_por_tipo_estacion.plot(kind='bar', ax=ax)
+
+# Configura los títulos y etiquetas de los ejes
+ax.set_xlabel('Tipo de Estación')
+ax.set_ylabel('Cantidad')
+ax.set_title('Comparación de Cuenta por Tipo de Estación')
+
+# Rota las etiquetas del eje x para una mejor legibilidad
+plt.xticks(rotation=45)
+# Muestra el gráfico
+st.pyplot(fig)
+
 # Footer
 st.markdown("<p class='highlight' style='color:red;'>© Equipo#1 2023-1 Análisis de Datos Hidrometeorológicos. Todos los derechos reservados.</p>",
 unsafe_allow_html=True)
