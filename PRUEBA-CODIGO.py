@@ -499,9 +499,7 @@ ax.set_ylabel('Precipitación en 24 horas')
 ax.set_zlabel('Promedio de Caudal')
 ax.set_title('Relación entre Máxima en 24 horas, Precipitación en 24 horas y Promedio de Caudal por Estación')
 
-# Mostrar el gráfico 3D interactivo
-# Crear una figura y ejes 3D
-fig = plt.figure()
+st.pyplot(fig)
 
 # Footer
 st.markdown("<p class='highlight' style='color:red;'>© Equipo#1 2023-1 Análisis de Datos Hidrometeorológicos. Todos los derechos reservados.</p>",
