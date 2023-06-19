@@ -462,6 +462,23 @@ else:
 	ax.set_title('Distribución de Precipitación')
 	st.pyplot(fig)
 
+
+# Título de la aplicación
+st.title('Mi Aplicación')
+
+# Campo de búsqueda
+search_query = st.text_input('Buscar', '')
+
+# Botón de búsqueda
+search_button = st.button('Buscar')
+
+# Verificación de la búsqueda
+if search_button:
+    st.write('Realizando búsqueda...')
+    # Aquí puedes agregar la lógica para procesar la búsqueda
+
+# Resultados de la búsqueda
+st.header('Resultados de la búsqueda')
 	st.markdown(
 	    """
 	    
