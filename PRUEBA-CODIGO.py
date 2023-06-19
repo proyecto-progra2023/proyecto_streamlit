@@ -469,26 +469,6 @@ else:
 	)
 st.write("aquiiiii")
 
-
-# Selecciona la columna que deseas graficar
-st.header("probando")
-
-columnas = ['MAXIMA24H', 'PRECIP24H', 'CAUDAL07H']
-
-# Crea una figura y ejes
-fig, ax = plt.subplots()
-
-# Grafica el gráfico de barras apiladas
-df[columnas].plot(kind='bar', stacked=True, ax=ax)
-
-# Configura los títulos y etiquetas de los ejes
-ax.set_xlabel('Índice de datos')
-ax.set_ylabel('Valores')
-ax.set_title('Comparación de Máxima, Precipitación y Caudal')
-# Muestra el gráfico
-st.pyplot(fig)
-
-
 # Crea una figura y ejes 3D
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
@@ -501,10 +481,9 @@ ax.set_xlabel('Precipitación en 24 horas')
 ax.set_ylabel('Promedio de Caudal en 24 horas')
 ax.set_zlabel('Máxima Caudal en 24 horas')
 ax.set_title('Relación entre Precipitación, Promedio de Caudal y Máxima Caudal en 24 horas')
-
 # Muestra el gráfico
 st.pyplot(fig)
-
+st.write("fin")
 
 
 
