@@ -66,10 +66,27 @@ ruta_csv ="DATOS_HIDROMETEREOLOGICOS_GORE_PIURA_4.csv"
 
 st.markdown('<p style="text-align: center; font-size: 24px; font-weight: bold;">“Año de la unidad, la paz y el desarrollo”</p>', unsafe_allow_html=True)
 
+# Ruta del archivo CSV
+ruta_csv = "DATOS_HIDROMETEREOLOGICOS_GORE_PIURA_4.csv"
 
 # Lee el archivo CSV en un DataFrame
 df = pd.read_csv(ruta_csv, encoding='latin-1')
-###################################################################################
+df['FECHA_MUESTRA'] = pd.to_datetime(df['FECHA_MUESTRA'], format='%Y%m%d')
+df['FECHA_CORTE'] = pd.to_datetime(df['FECHA_CORTE'], format='%Y%m%d')
+
+# Formatear las fechas en formato año-mes-día
+df['FECHA_MUESTRA'] = df['FECHA_MUESTRA'].dt.strftime('%Y-%m-%d')
+df['FECHA_CORTE'] = df['FECHA_CORTE'].dt.strftime('%Y-%m-%d')
+
+# Slider para seleccionar el rango de fechas
+fecha_inicio = pd.to_datetime(st.slider('Fecha de inicio', df['FECHA_CORTE'].min(), df['FECHA_CORTE'].max()))
+fecha_fin = pd.to_datetime(st.slider('Fecha de fin', fecha_inicio, df['FECHA_CORTE'].max()))
+
+# Filtrar los datos según el rango de fechas seleccionado
+df_filtrado = df[(df['FECHA_CORTE'] >= fecha_inicio) & (df['FECHA_CORTE'] <= fecha_fin)]
+
+# Muestra los datos filtrados en Streamlit
+st.write(df_filtrado)
 
 tabs = ['Nosotros', 'Datos Hidrometereológicos']
 selected_tab = st.sidebar.selectbox('Selecciona una pestaña', tabs)
