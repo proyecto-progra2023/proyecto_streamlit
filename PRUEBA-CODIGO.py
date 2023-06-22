@@ -133,25 +133,23 @@ else:
 	df['FECHA_MUESTRA'] = df['FECHA_MUESTRA'].dt.strftime('%Y-%m-%d')
 	df['FECHA_CORTE'] = df['FECHA_CORTE'].dt.strftime('%Y-%m-%d')
 
-    # Slider para filtrar por fechas
-    st.subheader("Slider para Filtrar por Fecha")
+        # Slider para filtrar por fechas
+        st.subheader("Slider para Filtrar por Fecha")
     
-    fecha_min = pd.to_datetime(df['FECHA_MUESTRA']).min()
-    fecha_max = pd.to_datetime(df['FECHA_MUESTRA']).max()
+        fecha_min = pd.to_datetime(df['FECHA_MUESTRA']).min()
+        fecha_max = pd.to_datetime(df['FECHA_MUESTRA']).max()
     
-    fecha_inicio = st.date_input('Seleccione la fecha de inicio', value=fecha_min, min_value=fecha_min, max_value=fecha_max)
-    fecha_fin = st.date_input('Seleccione la fecha de fin', value=fecha_max, min_value=fecha_min, max_value=fecha_max)
+        fecha_inicio = st.date_input('Seleccione la fecha de inicio', value=fecha_min, min_value=fecha_min, max_value=fecha_max)
+        fecha_fin = st.date_input('Seleccione la fecha de fin', value=fecha_max, min_value=fecha_min, max_value=fecha_max)
     
-    if fecha_inicio <= fecha_fin:
-        fecha_inicio = fecha_inicio.strftime('%Y-%m-%d')
-        fecha_fin = fecha_fin.strftime('%Y-%m-%d')
-        df_filtrado = df[(df['FECHA_MUESTRA'] >= fecha_inicio) & (df['FECHA_MUESTRA'] <= fecha_fin)]
-        # Mostrar los datos filtrados en Streamlit
-        st.write(df_filtrado)
-
+        if fecha_inicio <= fecha_fin:
+            fecha_inicio = fecha_inicio.strftime('%Y-%m-%d')
+            fecha_fin = fecha_fin.strftime('%Y-%m-%d')
+            df_filtrado = df[(df['FECHA_MUESTRA'] >= fecha_inicio) & (df['FECHA_MUESTRA'] <= fecha_fin)]
+            # Mostrar los datos filtrados en Streamlit
+            st.write(df_filtrado)
         else:
-		
-        	st.warning('Seleccione fechas válidas')
+	        st.warning('Seleccione fechas válidas')
 
 	st.header("Definiciones")
 	st.write("La cuenca es una extensión de terreno en un valle, escurren aguas formando un río atravesando valles y escurriendo en el mar.")
