@@ -125,7 +125,7 @@ else:
 
 	   
 
-
+        st.subheader("Slider para Filtrar por Fecha")
 	# Convertir la columna 'FECHA... en formato de fecha
 
 	dff['FECHA_MUESTRA'] = pd.to_datetime(dff['FECHA_MUESTRA'], format='%Y%m%d')
@@ -134,6 +134,9 @@ else:
 	# Formatear las fechas en formato año-mes-día
 	dff['FECHA_MUESTRA'] = dff['FECHA_MUESTRA'].dt.strftime('%Y-%m-%d')
 	dff['FECHA_CORTE'] = dff['FECHA_CORTE'].dt.strftime('%Y-%m-%d')
+	
+	fecha_inicio = st.date_input('Seleccione la fecha de inicio', value=fecha_min, min_value=fecha_min, max_value=fecha_max)
+	fecha_fin = st.date_input('Seleccione la fecha de fin', value=fecha_max, min_value=fecha_min, max_value=fecha_max)
 	if fecha_inicio <= fecha_fin:
 		fecha_inicio = fecha_inicio.strftime('%Y-%m-%d')
 		fecha_fin = fecha_fin.strftime('%Y-%m-%d')
