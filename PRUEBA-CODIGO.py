@@ -124,10 +124,6 @@ else:
 	    st.write("Esta información contiene el nombre de la cuenca, nombre de la estación, medida del caudal a las 007:00 horas, el promedio del caudal a las 24:00 horas, el caudal máximo a las 24:00 horas, niveles de presas a las 7:00 horas, nivel máximo de las presas a las 24:00 horas, el volumen de las presas a las 07:00 y precipitaciones.")
 
 	   
-
-        st.subheader("Slider para Filtrar por Fecha")
-	# Convertir la columna 'FECHA... en formato de fecha
-
 	dff['FECHA_MUESTRA'] = pd.to_datetime(dff['FECHA_MUESTRA'], format='%Y%m%d')
 	dff['FECHA_CORTE'] = pd.to_datetime(dff['FECHA_CORTE'], format='%Y%m%d')
 
@@ -135,6 +131,10 @@ else:
 	dff['FECHA_MUESTRA'] = dff['FECHA_MUESTRA'].dt.strftime('%Y-%m-%d')
 	dff['FECHA_CORTE'] = dff['FECHA_CORTE'].dt.strftime('%Y-%m-%d')
 	
+        st.subheader("Slider para Filtrar por Fecha")
+	fecha_min = pd.to_datetime(dff['FECHA_MUESTRA']).min()
+	fecha_max = pd.to_datetime(dff['FECHA_MUESTRA']).max()
+	# Convertir la columna 'FECHA... en formato de fecha
 	fecha_inicio = st.date_input('Seleccione la fecha de inicio', value=fecha_min, min_value=fecha_min, max_value=fecha_max)
 	fecha_fin = st.date_input('Seleccione la fecha de fin', value=fecha_max, min_value=fecha_min, max_value=fecha_max)
 	if fecha_inicio <= fecha_fin:
