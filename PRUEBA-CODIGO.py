@@ -120,7 +120,7 @@ else:
         if st.button('Seguir leyendo'):
 	        show_info = not show_info
 		st.write("Agua y Saneamiento")
-        	st.write("Contiene los datos Hidrometeorológicos del Sistema Hidráulico Mayor a cargo del Proyecto Especial Chira Piura.")
+		st.write("Contiene los datos Hidrometeorológicos del Sistema Hidráulico Mayor a cargo del Proyecto Especial Chira Piura.")
         	st.header("Descripción del Dataset")
         	st.write("Este dataset muestra los datos hidrometeorológicos registrados de las presas, estaciones hidrológicas e hidrométricas.")
         	st.write("Esta información contiene el nombre de la cuenca, nombre de la estación, medida del caudal a las 007:00 horas, el promedio del caudal a las 24:00 horas, el caudal máximo a las 24:00 horas, niveles de presas a las 7:00 horas, nivel máximo de las presas a las 24:00 horas, el volumen de las presas a las 07:00 y precipitaciones.")
