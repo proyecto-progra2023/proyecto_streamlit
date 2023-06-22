@@ -117,7 +117,7 @@ else:
         )
         show_info = False  # Variable de estado inicializada en False
         if st.button('Seguir leyendo'):
-		show_info = not show_info
+	    show_info = not show_info
 		st.write("Agua y Saneamiento")
         	st.write("Contiene los datos Hidrometeorológicos del Sistema Hidráulico Mayor a cargo del Proyecto Especial Chira Piura.")
         	st.header("Descripción del Dataset")
