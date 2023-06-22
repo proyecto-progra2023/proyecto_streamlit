@@ -59,6 +59,9 @@ st.sidebar.image(logo)
 import pandas as pd
 import streamlit as st
 
+import pandas as pd
+import streamlit as st
+
 # Ruta del archivo CSV
 ruta_csv = "DATOS_HIDROMETEREOLOGICOS_GORE_PIURA_4.csv"
 
@@ -84,6 +87,8 @@ fecha_inicio = st.date_input('Seleccione la fecha de inicio', value=fecha_min, m
 fecha_fin = st.date_input('Seleccione la fecha de fin', value=fecha_max, min_value=fecha_min, max_value=fecha_max)
 
 if fecha_inicio <= fecha_fin:
+    fecha_inicio = fecha_inicio.strftime('%Y-%m-%d')
+    fecha_fin = fecha_fin.strftime('%Y-%m-%d')
     df_filtrado = df[(df['FECHA_MUESTRA'] >= fecha_inicio) & (df['FECHA_MUESTRA'] <= fecha_fin)]
     # Mostrar los datos filtrados en Streamlit
     st.write(df_filtrado)
