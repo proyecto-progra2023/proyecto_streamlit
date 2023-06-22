@@ -51,7 +51,7 @@ st.sidebar.image(logo)
 ruta_csv ="DATOS_HIDROMETEREOLOGICOS_GORE_PIURA_4.csv"
 
 # Lee el archivo CSV en un DataFrame
-df = pd.read_csv(ruta_csv, encoding='latin-1')
+dff= pd.read_csv(ruta_csv, encoding='latin-1')
 
 #################################################################################
 
@@ -128,15 +128,19 @@ else:
 
 	# Convertir la columna 'FECHA... en formato de fecha
 
-	df['FECHA_MUESTRA'] = pd.to_datetime(df['FECHA_MUESTRA'], format='%Y%m%d')
-	df['FECHA_CORTE'] = pd.to_datetime(df['FECHA_CORTE'], format='%Y%m%d')
+	dff['FECHA_MUESTRA'] = pd.to_datetime(dff['FECHA_MUESTRA'], format='%Y%m%d')
+	dff['FECHA_CORTE'] = pd.to_datetime(dff['FECHA_CORTE'], format='%Y%m%d')
 
 	# Formatear las fechas en formato año-mes-día
-	df['FECHA_MUESTRA'] = df['FECHA_MUESTRA'].dt.strftime('%Y-%m-%d')
-	df['FECHA_CORTE'] = df['FECHA_CORTE'].dt.strftime('%Y-%m-%d')
-
-	# Muestra los datos en Streamlit
-	st.write(df)
+	dff['FECHA_MUESTRA'] = dff['FECHA_MUESTRA'].dt.strftime('%Y-%m-%d')
+	dff['FECHA_CORTE'] = dff['FECHA_CORTE'].dt.strftime('%Y-%m-%d')
+	if fecha_inicio <= fecha_fin:
+		fecha_inicio = fecha_inicio.strftime('%Y-%m-%d')
+		fecha_fin = fecha_fin.strftime('%Y-%m-%d')
+		df = dff[(dff['FECHA_MUESTRA'] >= fecha_inicio) & (df['FECHA_MUESTRA'] <= fecha_fin)]
+		st.write(df)
+	else:
+		st.warning('Seleccione fechas válidas')
 
 	st.header("Definiciones")
 	st.write("La cuenca es una extensión de terreno en un valle, escurren aguas formando un río atravesando valles y escurriendo en el mar.")
