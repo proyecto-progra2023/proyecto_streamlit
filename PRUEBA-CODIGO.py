@@ -124,9 +124,6 @@ else:
 	    st.write("Este dataset muestra los datos hidrometeorológicos registrados de las presas, estaciones hidrológicas e hidrométricas.")
 	    st.write("Esta información contiene el nombre de la cuenca, nombre de la estación, medida del caudal a las 007:00 horas, el promedio del caudal a las 24:00 horas, el caudal máximo a las 24:00 horas, niveles de presas a las 7:00 horas, nivel máximo de las presas a las 24:00 horas, el volumen de las presas a las 07:00 y precipitaciones.")
 
-	   
-
-
 	# Convertir la columna 'FECHA... en formato de fecha
 
 	df['FECHA_MUESTRA'] = pd.to_datetime(df['FECHA_MUESTRA'], format='%Y%m%d')
@@ -135,11 +132,6 @@ else:
 	# Formatear las fechas en formato año-mes-día
 	df['FECHA_MUESTRA'] = df['FECHA_MUESTRA'].dt.strftime('%Y-%m-%d')
 	df['FECHA_CORTE'] = df['FECHA_CORTE'].dt.strftime('%Y-%m-%d')
-
-	# Muestra los datos en Streamlit
-	st.write(df)
-
-
 
     # Slider para filtrar por fechas
     st.subheader("Slider para Filtrar por Fecha")
@@ -156,8 +148,10 @@ else:
         df_filtrado = df[(df['FECHA_MUESTRA'] >= fecha_inicio) & (df['FECHA_MUESTRA'] <= fecha_fin)]
         # Mostrar los datos filtrados en Streamlit
         st.write(df_filtrado)
-    else:
-        st.warning('Seleccione fechas válidas')
+
+        else:
+		
+        	st.warning('Seleccione fechas válidas')
 
 	st.header("Definiciones")
 	st.write("La cuenca es una extensión de terreno en un valle, escurren aguas formando un río atravesando valles y escurriendo en el mar.")
