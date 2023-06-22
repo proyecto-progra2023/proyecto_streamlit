@@ -74,8 +74,6 @@ df['FECHA_CORTE'] = pd.to_datetime(df['FECHA_CORTE'], format='%Y%m%d')
 df['FECHA_MUESTRA'] = df['FECHA_MUESTRA'].dt.strftime('%Y-%m-%d')
 df['FECHA_CORTE'] = df['FECHA_CORTE'].dt.strftime('%Y-%m-%d')
 
-# Mostrar los datos completos en Streamlit
-st.write(df)
 
 # Slider para filtrar por fechas
 st.subheader("Slider para Filtrar por Fecha")
