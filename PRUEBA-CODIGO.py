@@ -131,7 +131,8 @@ else:
 
 	# Formatear las fechas en formato año-mes-día
 	df['FECHA_MUESTRA'] = df['FECHA_MUESTRA'].dt.strftime('%Y-%m-%d')
-	df['FECHA_CORTE'] = df['FECHA_CORTE'].dt.strftime('%Y-%m-%d')}# Slider para filtrar por fechas
+	df['FECHA_CORTE'] = df['FECHA_CORTE'].dt.strftime('%Y-%m-%d')
+	# Slider para filtrar por fechas
         st.subheader("Slider para Filtrar por Fecha")
     
         fecha_min = pd.to_datetime(df['FECHA_MUESTRA']).min()
