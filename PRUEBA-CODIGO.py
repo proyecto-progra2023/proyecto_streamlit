@@ -146,7 +146,7 @@ else:
 	if fecha_inicio <= fecha_fin:
 		fecha_inicio = fecha_inicio.strftime('%Y-%m-%d')
 		fecha_fin = fecha_fin.strftime('%Y-%m-%d')
-		df = dff[(dff['FECHA_MUESTRA'] >= fecha_inicio) & (df['FECHA_MUESTRA'] <= fecha_fin)]
+		df = dff[(dff['FECHA_MUESTRA'] >= fecha_inicio) & (dff['FECHA_MUESTRA'] <= fecha_fin)]
 		st.write(df)
 	else:
 		st.warning('Seleccione fechas válidas')
