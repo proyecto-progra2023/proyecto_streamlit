@@ -55,34 +55,33 @@ st.code("print('Hola, mundo!')")
 # Cargar y mostrar el logo
 logo = Image.open('Logo_Oficiall.png')
 st.sidebar.image(logo)
-# Ruta del archivo CSV
-ruta_csv ="DATOS_HIDROMETEREOLOGICOS_GORE_PIURA_4.csv"
-
-# Lee el archivo CSV en un DataFrame
-df = pd.read_csv(ruta_csv, encoding='latin-1')
-###################################################################################
-
-import streamlit as st
-import pandas as pd
 
 # Ruta del archivo CSV
 ruta_csv = "DATOS_HIDROMETEREOLOGICOS_GORE_PIURA_4.csv"
 
 # Lee el archivo CSV en un DataFrame
 df = pd.read_csv(ruta_csv, encoding='latin-1')
+df['FECHA_MUESTRA'] = pd.to_datetime(df['FECHA_MUESTRA'], format='%Y%m%d')
 df['FECHA_CORTE'] = pd.to_datetime(df['FECHA_CORTE'], format='%Y%m%d')
 
-# Obtener las fechas mínima y máxima
-fecha_min = df['FECHA_CORTE'].min().date()
-fecha_max = df['FECHA_CORTE'].max().date()
+# Formatear las fechas en formato año-mes-día
+df['FECHA_MUESTRA'] = df['FECHA_MUESTRA'].dt.strftime('%Y-%m-%d')
+df['FECHA_CORTE'] = df['FECHA_CORTE'].dt.strftime('%Y-%m-%d')
 
-# Slider para seleccionar el rango de fechas
+# Mostrar los datos completos en Streamlit
+st.write(df)
+
+# Slider para filtrar por fechas
+st.subheader("Slider para Filtrar por Fecha")
+
+fecha_min = pd.to_datetime(df['FECHA_MUESTRA']).min()
+fecha_max = pd.to_datetime(df['FECHA_MUESTRA']).max()
+
 fecha_inicio = st.date_input('Seleccione la fecha de inicio', value=fecha_min, min_value=fecha_min, max_value=fecha_max)
 fecha_fin = st.date_input('Seleccione la fecha de fin', value=fecha_max, min_value=fecha_min, max_value=fecha_max)
 
 if fecha_inicio <= fecha_fin:
-    df_filtrado = df[(df['FECHA_CORTE'] >= pd.to_datetime(fecha_inicio)) & (df['FECHA_CORTE'] <= pd.to_datetime(fecha_fin))]
+    df_filtrado = df[(df['FECHA_MUESTRA'] >= fecha_inicio.strftime('%Y-%m-%d')) & (df['FECHA_MUESTRA'] <= fecha_fin.strftime('%Y-%m-%d'))]
     # Luego puedes utilizar el DataFrame filtrado para generar gráficos u otras visualizaciones
 else:
     st.warning('Seleccione fechas válidas')
-st.write(df_filtrado)
