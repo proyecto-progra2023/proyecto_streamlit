@@ -122,16 +122,22 @@ else:
 	    st.header("Descripción del Dataset")
 	    st.write("Este dataset muestra los datos hidrometeorológicos registrados de las presas, estaciones hidrológicas e hidrométricas.")
 	    st.write("Esta información contiene el nombre de la cuenca, nombre de la estación, medida del caudal a las 007:00 horas, el promedio del caudal a las 24:00 horas, el caudal máximo a las 24:00 horas, niveles de presas a las 7:00 horas, nivel máximo de las presas a las 24:00 horas, el volumen de las presas a las 07:00 y precipitaciones.")
+	
+	st.header("Definiciones")
+	st.write("La cuenca es una extensión de terreno en un valle, escurren aguas formando un río atravesando valles y escurriendo en el mar.")
+	st.write("Una cuenca puede tener varias estaciones hidrometeorológicas.")
+	st.write("El dato de precipitación es la lluvia acumulada entre las 7:00 horas del día anterior y las 7:00 horas de hoy (24 horas). Cuando se considera el campo vacío, indica que no se realizaron mediciones.")
+	st.write("Para mayor información también puede ingresar a:")
+	st.write("[http://servicios.regionpiura.gob.pe/datosh](http://servicios.regionpiura.gob.pe/datosh)")	 
 
-	   
+	
 	dff['FECHA_MUESTRA'] = pd.to_datetime(dff['FECHA_MUESTRA'], format='%Y%m%d')
 	dff['FECHA_CORTE'] = pd.to_datetime(dff['FECHA_CORTE'], format='%Y%m%d')
 
 	# Formatear las fechas en formato año-mes-día
 	dff['FECHA_MUESTRA'] = dff['FECHA_MUESTRA'].dt.strftime('%Y-%m-%d')
 	dff['FECHA_CORTE'] = dff['FECHA_CORTE'].dt.strftime('%Y-%m-%d')
-	
-        st.subheader("Slider para Filtrar por Fecha")
+	st.subheader("Slider para Filtrar por Fecha")
 	fecha_min = pd.to_datetime(dff['FECHA_MUESTRA']).min()
 	fecha_max = pd.to_datetime(dff['FECHA_MUESTRA']).max()
 	# Convertir la columna 'FECHA... en formato de fecha
@@ -145,12 +151,6 @@ else:
 	else:
 		st.warning('Seleccione fechas válidas')
 
-	st.header("Definiciones")
-	st.write("La cuenca es una extensión de terreno en un valle, escurren aguas formando un río atravesando valles y escurriendo en el mar.")
-	st.write("Una cuenca puede tener varias estaciones hidrometeorológicas.")
-	st.write("El dato de precipitación es la lluvia acumulada entre las 7:00 horas del día anterior y las 7:00 horas de hoy (24 horas). Cuando se considera el campo vacío, indica que no se realizaron mediciones.")
-	st.write("Para mayor información también puede ingresar a:")
-	st.write("[http://servicios.regionpiura.gob.pe/datosh](http://servicios.regionpiura.gob.pe/datosh)")
 	# Crear el gráfico de línea
 	with st.expander("**Gráfico de línea**"):
 		fig, ax = plt.subplots()
