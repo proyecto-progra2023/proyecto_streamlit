@@ -85,4 +85,4 @@ if fecha_inicio <= fecha_fin:
     # Luego puedes utilizar el DataFrame filtrado para generar gráficos u otras visualizaciones
 else:
     st.warning('Seleccione fechas válidas')
-
+st.write(df_filtrado)
