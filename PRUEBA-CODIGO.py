@@ -119,7 +119,9 @@ else:
 	
         if st.button('Seguir leyendo'):
 	        show_info = not show_info
+		
 		st.write("Agua y Saneamiento")
+		
 		st.write("Contiene los datos Hidrometeorológicos del Sistema Hidráulico Mayor a cargo del Proyecto Especial Chira Piura.")
         	st.header("Descripción del Dataset")
         	st.write("Este dataset muestra los datos hidrometeorológicos registrados de las presas, estaciones hidrológicas e hidrométricas.")
