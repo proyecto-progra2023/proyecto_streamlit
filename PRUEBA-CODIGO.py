@@ -141,8 +141,8 @@ else:
 	fecha_min = pd.to_datetime(dff['FECHA_MUESTRA']).min()
 	fecha_max = pd.to_datetime(dff['FECHA_MUESTRA']).max()
 	# Convertir la columna 'FECHA... en formato de fecha
-	fecha_inicio = st.slider('Seleccione la fecha de inicio', min_value=fecha_min, max_value=fecha_max, value=pd.to_datetime(fecha_min).month, format='%.0f')
-	fecha_fin = st.slider('Seleccione la fecha de fin', min_value=fecha_min, max_value=fecha_max, value=pd.to_datetime(fecha_max).month, format='%.0f')
+	fecha_inicio = st.slider('Seleccione la fecha de inicio', min_value=fecha_min, max_value=fecha_max, value=fecha_min, format='YYYY-MM-DD')
+	fecha_fin = st.slider('Seleccione la fecha de fin', min_value=fecha_min, max_value=fecha_max, value=fecha_max, format='YYYY-MM-DD')
 	if fecha_inicio <= fecha_fin:
 		fecha_inicio = fecha_inicio.strftime('%Y-%m-%d')
 		fecha_fin = fecha_fin.strftime('%Y-%m-%d')
