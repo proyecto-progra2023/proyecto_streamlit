@@ -108,55 +108,57 @@ if selected_tab == 'Nosotros':
 
 
 else:
-	st.markdown("<h1 class='big-font'>Análisis de Datos Hidrometeorológicos [Gobierno Regional Piura]</h1>", unsafe_allow_html=True)
-	st.markdown(
-    """
-    En esta página de Streamlit, explorarás los datos hidrometeorológicos de la región. 
-    Descubre patrones y tendencias relacionadas con el caudal y la precipitación en un formato interactivo y visualmente atractivo.
-    """
-	)
-	show_info = False  # Variable de estado inicializada en False
-	if st.button('Seguir leyendo'):
-	    show_info = not show_info
-	    st.write("Agua y Saneamiento")
-	    st.write("Contiene los datos Hidrometeorológicos del Sistema Hidráulico Mayor a cargo del Proyecto Especial Chira Piura.")
-	    st.header("Descripción del Dataset")
-	    st.write("Este dataset muestra los datos hidrometeorológicos registrados de las presas, estaciones hidrológicas e hidrométricas.")
-	    st.write("Esta información contiene el nombre de la cuenca, nombre de la estación, medida del caudal a las 007:00 horas, el promedio del caudal a las 24:00 horas, el caudal máximo a las 24:00 horas, niveles de presas a las 7:00 horas, nivel máximo de las presas a las 24:00 horas, el volumen de las presas a las 07:00 y precipitaciones.")
+        st.markdown("<h1 class='big-font'>Análisis de Datos Hidrometeorológicos [Gobierno Regional Piura]</h1>", unsafe_allow_html=True)
+        st.markdown(
+        """
+        En esta página de Streamlit, explorarás los datos hidrometeorológicos de la región. 
+        Descubre patrones y tendencias relacionadas con el caudal y la precipitación en un formato interactivo y visualmente atractivo.
+        """
+        )
+        show_info = False  # Variable de estado inicializada en False
+        if st.button('Seguir leyendo'):
+		show_info = not show_info
+		st.write("Agua y Saneamiento")
+        	st.write("Contiene los datos Hidrometeorológicos del Sistema Hidráulico Mayor a cargo del Proyecto Especial Chira Piura.")
+        	st.header("Descripción del Dataset")
+        	st.write("Este dataset muestra los datos hidrometeorológicos registrados de las presas, estaciones hidrológicas e hidrométricas.")
+        	st.write("Esta información contiene el nombre de la cuenca, nombre de la estación, medida del caudal a las 007:00 horas, el promedio del caudal a las 24:00 horas, el caudal máximo a las 24:00 horas, niveles de presas a las 7:00 horas, nivel máximo de las presas a las 24:00 horas, el volumen de las presas a las 07:00 y precipitaciones.")
 
-	# Convertir la columna 'FECHA... en formato de fecha
+    	# Convertir la columna 'FECHA... en formato de fecha
 
-	df['FECHA_MUESTRA'] = pd.to_datetime(df['FECHA_MUESTRA'], format='%Y%m%d')
-	df['FECHA_CORTE'] = pd.to_datetime(df['FECHA_CORTE'], format='%Y%m%d')
+        df['FECHA_MUESTRA'] = pd.to_datetime(df['FECHA_MUESTRA'], format='%Y%m%d')
+    	df['FECHA_CORTE'] = pd.to_datetime(df['FECHA_CORTE'], format='%Y%m%d')
 
-	# Formatear las fechas en formato año-mes-día
-	df['FECHA_MUESTRA'] = df['FECHA_MUESTRA'].dt.strftime('%Y-%m-%d')
-	df['FECHA_CORTE'] = df['FECHA_CORTE'].dt.strftime('%Y-%m-%d')
-	# Slider para filtrar por fechas
-        st.subheader("Slider para Filtrar por Fecha")
+    	# Formatear las fechas en formato año-mes-día
+    	df['FECHA_MUESTRA'] = df['FECHA_MUESTRA'].dt.strftime('%Y-%m-%d')
+    	df['FECHA_CORTE'] = df['FECHA_CORTE'].dt.strftime('%Y-%m-%d')
+   	 # Slider para filtrar por fechas
+    	st.subheader("Slider para Filtrar por Fecha")
     
-        fecha_min = pd.to_datetime(df['FECHA_MUESTRA']).min()
-        fecha_max = pd.to_datetime(df['FECHA_MUESTRA']).max()
+    	fecha_min = pd.to_datetime(df['FECHA_MUESTRA']).min()
+    	fecha_max = pd.to_datetime(df['FECHA_MUESTRA']).max()
     
-        fecha_inicio = st.date_input('Seleccione la fecha de inicio', value=fecha_min, min_value=fecha_min, max_value=fecha_max)
-        fecha_fin = st.date_input('Seleccione la fecha de fin', value=fecha_max, min_value=fecha_min, max_value=fecha_max)
+    	fecha_inicio = st.date_input('Seleccione la fecha de inicio', value=fecha_min, min_value=fecha_min, max_value=fecha_max)
+    	fecha_fin = st.date_input('Seleccione la fecha de fin', value=fecha_max, min_value=fecha_min, max_value=fecha_max)
     
-        if fecha_inicio <= fecha_fin:
-                fecha_inicio = fecha_inicio.strftime('%Y-%m-%d')
-                fecha_fin = fecha_fin.strftime('%Y-%m-%d')
-                df_filtrado = df[(df['FECHA_MUESTRA'] >= fecha_inicio) & (df['FECHA_MUESTRA'] <= fecha_fin)]
-                # Mostrar los datos filtrados en Streamlit
-                st.write(df_filtrado)
-        else:
-	        st.warning('Seleccione fechas válidas')
+    	if fecha_inicio <= fecha_fin:
+	    
+        	fecha_inicio = fecha_inicio.strftime('%Y-%m-%d')
+        	fecha_fin = fecha_fin.strftime('%Y-%m-%d')
+        	df_filtrado = df[(df['FECHA_MUESTRA'] >= fecha_inicio) & (df['FECHA_MUESTRA'] <= fecha_fin)]
+        	# Mostrar los datos filtrados en Streamlit
+        	st.write(df_filtrado)
+    	else:
+        	st.warning('Seleccione fechas válidas')
 
-	st.header("Definiciones")
-	st.write("La cuenca es una extensión de terreno en un valle, escurren aguas formando un río atravesando valles y escurriendo en el mar.")
-	st.write("Una cuenca puede tener varias estaciones hidrometeorológicas.")
-	st.write("El dato de precipitación es la lluvia acumulada entre las 7:00 horas del día anterior y las 7:00 horas de hoy (24 horas). Cuando se considera el campo vacío, indica que no se realizaron mediciones.")
-	st.write("Para mayor información también puede ingresar a:")
-	st.write("[http://servicios.regionpiura.gob.pe/datosh](http://servicios.regionpiura.gob.pe/datosh)")
-	# Crear el gráfico de línea
+    	st.header("Definiciones")
+    	st.write("La cuenca es una extensión de terreno en un valle, escurren aguas formando un río atravesando valles y escurriendo en el mar.")
+    	st.write("Una cuenca puede tener varias estaciones hidrometeorológicas.")
+    	st.write("El dato de precipitación es la lluvia acumulada entre las 7:00 horas del día anterior y las 7:00 horas de hoy (24 horas). Cuando se considera el campo vacío, indica que no se realizaron mediciones.")
+    	st.write("Para mayor información también puede ingresar a:")
+    	st.write("[http://servicios.regionpiura.gob.pe/datosh](http://servicios.regionpiura.gob.pe/datosh)")
+    	# Crear el gráfico de línea
+
 	with st.expander("**Gráfico de línea**"):
 		fig, ax = plt.subplots()
 		plt.plot(df['FECHA_MUESTRA'], df['PROMEDIO24H'])
