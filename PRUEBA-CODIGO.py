@@ -138,8 +138,8 @@ else:
 	dff['FECHA_MUESTRA'] = dff['FECHA_MUESTRA'].dt.strftime('%Y-%m-%d')
 	dff['FECHA_CORTE'] = dff['FECHA_CORTE'].dt.strftime('%Y-%m-%d')
 	st.subheader("Slider para Filtrar por Fecha")
-	fecha_min = pd.to_datetime(dff['FECHA_MUESTRA']).min()
-	fecha_max = pd.to_datetime(dff['FECHA_MUESTRA']).max()
+	fecha_minm = pd.to_datetime(dff['FECHA_MUESTRA']).min()
+	fecha_maxm = pd.to_datetime(dff['FECHA_MUESTRA']).max()
 	# Convertir la columna 'FECHA... en formato de fecha
 	fecha_inicio = st.slider('Seleccione la fecha de inicio', min_value=fecha_min, max_value=fecha_max, value=pd.to_datetime(fecha_min).month, format='%.0f')
 	fecha_fin = st.slider('Seleccione la fecha de fin', min_value=fecha_min, max_value=fecha_max, value=pd.to_datetime(fecha_max).month, format='%.0f')
