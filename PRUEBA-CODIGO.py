@@ -119,7 +119,6 @@ else:
 	
         if st.button('Seguir leyendo'):
 	        show_info = not show_info
-		
 		st.write("Agua y Saneamiento")
 		
 		st.write("Contiene los datos Hidrometeorológicos del Sistema Hidráulico Mayor a cargo del Proyecto Especial Chira Piura.")
