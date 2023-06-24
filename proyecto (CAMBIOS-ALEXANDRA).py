@@ -272,9 +272,8 @@ else:
 	
 	    # Mostrar el gráfico en la aplicación
 	    st.pyplot(fig)
-
-
-
+#CAMBIO
+with st.expander("Caudal promedio en 24 horas - Comparación entre años"):
 	df['AÑO'] = df['FECHA_MUESTRA'].dt.year
 	caudal_por_año = df.groupby('AÑO')['PROMEDIO24H'].mean()
 	fig, ax = plt.subplots()
@@ -308,6 +307,7 @@ else:
 	fig2, ax2 = plt.subplots()
 
 	# Realizar acciones de trazado en los ejes
+with st.expander("Caudal Promedio por fecha en el rango seleccionado"):
 	ax1.plot(df_filtrado['FECHA_MUESTRA'], df_filtrado['PROMEDIO24H'])
 	ax1.set_xlabel('Fecha')
 	ax1.set_ylabel('Caudal Promedio en 24 horas')
