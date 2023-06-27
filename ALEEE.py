@@ -326,12 +326,14 @@ else:
 	ax1.set_ylabel('Caudal Promedio en 24 horas')
 	ax1.set_title('Caudal Promedio por fecha en el rango seleccionado')
 	plt.xticks(rotation=45)
+	plt.show()
 
 	ax2.plot(df_filtrado['FECHA_MUESTRA'], df_filtrado['PRECIP24H'])
 	ax2.set_xlabel('Fecha')
 	ax2.set_ylabel('Precipitación en 24 horas')
 	ax2.set_title('Precipitación por fecha en el rango seleccionado')
 	plt.xticks(rotation=45)
+	plt.show()
 	
 
 	# Mostrar los gráficos en Streamlit
