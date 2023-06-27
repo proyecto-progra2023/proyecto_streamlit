@@ -330,6 +330,8 @@ else:
 	ax2.set_xlabel('Fecha')
 	ax2.set_ylabel('Precipitación en 24 horas')
 	ax2.set_title('Precipitación por fecha en el rango seleccionado')
+	plt.xticks(rotation=45)
+	
 
 	# Mostrar los gráficos en Streamlit
 	with st.expander("Caudal Promedio por fecha en el rango seleccionado"):
