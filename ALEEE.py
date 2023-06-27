@@ -325,7 +325,11 @@ else:
 	ax1.set_xlabel('Fecha')
 	ax1.set_ylabel('Caudal Promedio en 24 horas')
 	ax1.set_title('Caudal Promedio por fecha en el rango seleccionado')
-	plt.xticks(rotation=45)
+	# Rotar las etiquetas de las fechas
+	ax1.set_xticklabels(df_filtrado['FECHA_MUESTRA'], rotation=90)
+	# Ajustar los espacios entre las etiquetas
+	fig1.autofmt_xdate()
+	# Mostrar la gráfica
 	plt.show()
 
 	ax2.plot(df_filtrado['FECHA_MUESTRA'], df_filtrado['PRECIP24H'])
