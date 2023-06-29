@@ -123,7 +123,7 @@ else:
 	    st.write("Este dataset muestra los datos hidrometeorológicos registrados de las presas, estaciones hidrológicas e hidrométricas.")
 	    st.write("Esta información contiene el nombre de la cuenca, nombre de la estación, medida del caudal a las 007:00 horas, el promedio del caudal a las 24:00 horas, el caudal máximo a las 24:00 horas, niveles de presas a las 7:00 horas, nivel máximo de las presas a las 24:00 horas, el volumen de las presas a las 07:00 y precipitaciones.")
 	    ruta_imagen = "https://servicios.regionpiura.gob.pe/servicios/datos/mapa/crear_mapa.php"
-	    st.image(ruta_imagen, caption='*Fuente:* Gobierno Regional de Piura', use_column_width=True)
+	    st.image(ruta_imagen, caption='Fuente: Gobierno Regional de Piura', use_column_width=True)
 	# Convertir la columna 'FECHA... en formato de fecha
 
 	df['FECHA_MUESTRA'] = pd.to_datetime(df['FECHA_MUESTRA'], format='%Y%m%d')
@@ -316,9 +316,11 @@ else:
 
 	# Mostrar los gráficos en Streamlit
 	with st.expander("Caudal Promedio por fecha en el rango seleccionado"):
+		plt.xticks(rotation=90)
 		st.pyplot(fig1)
 		st.write("El gráfico muestra el caudal promedio en 24 horas para las fechas seleccionadas.Este permite visualizar la variación del caudal a lo largo del rango de fechas seleccionado.")
 	with st.expander("Precipitación por fecha en el rango seleccionado"):
+		plt.xticks(rotation=90)
 		st.pyplot(fig2)
 		st.write("El gráfico muestra la precipitación en 24 horas para las fechas seleccionadas. El eje x representa la fecha y el eje y muestra la cantidad de precipitación.Asi podemos ver la variación de la precipitación a lo largo del rango de fechas seleccionado.")
 	
