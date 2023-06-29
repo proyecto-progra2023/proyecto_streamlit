@@ -158,6 +158,7 @@ else:
 		plt.tight_layout()  # Ajustar el espaciado
 		plt.show()
 		st.pyplot(fig)
+		st.write("Este es un gráfico de línea que muestra el caudal promedio en 24 horas en función de la fecha muestra. El eje x representa las fechas y el eje y representa el caudal promedio. En la gráfica se muestra cómo varía el caudal a lo largo del tiempo.")
 
 	#-----------------------------------
 	# Convertir la columna 'FECHA_MUESTRA' en formato de fecha
@@ -189,6 +190,7 @@ else:
 		plt.tight_layout()  # Ajustar el espaciado
 		plt.show()
 		st.pyplot(fig)
+		st.write("En este gráfico se muestra la variación del caudal promedio en 24 horas en función del mes. Cada línea representa un año diferente, y en el eje x se muestran los meses del año. El eje y representa el caudal promedio en 24 horas. Asi se permite identificar patrones estacionales en el caudal a lo largo de los años.")
 
 	#----------------------------
 
@@ -216,6 +218,7 @@ else:
 
 		# Mostrar el gráfico utilizando st.pyplot()
 		st.pyplot(fig)
+		st.write("Este gráfico de barras muestra la suma de la precipitación en 24 horas por distrito. Cada barra representa un distrito, donde se muestran los nombres de los distritos y la cantidad de precipitación en 24 horas. Asimismo nos permite comparar la precipitación entre los distintos distritos y identificar aquellos con mayor o menor acumulación de precipitación.")
 	with st.expander("Caudal vs. Fecha"):
 		fig, ax = plt.subplots()
 		ax.plot(df['FECHA_MUESTRA'], df['CAUDAL07H'])
@@ -224,6 +227,7 @@ else:
 		ax.set_title('Caudal vs. Fecha')
 		plt.xticks(rotation=45)
 		st.pyplot(fig)
+		st.write("En este gráfico de línea podemos ver la variación del caudal a lo largo del tiempo, el cual nos permite observar patrones o tendencias en el caudal a medida que transcurren las fechas. Se ha rotado el texto del eje x para mejorar la legibilidad. ")
 
 
 
@@ -240,6 +244,7 @@ else:
 		ax.set_title('Promedio de Caudal por Provincia')
 		plt.xticks(rotation=45)
 		st.pyplot(fig)
+		st.write("Este gráfico de barras muestra el promedio de caudal por provincia. Cada barra representa una provincia y en el eje x se muestran los nombres de las provincias. El eje y representa el promedio de caudal. Este permite comparar los promedios de caudal entre las distintas provincias y identificar aquellas con mayor o menor promedio. La rotación de las etiquetas en el eje x mejora la legibilidad del gráfico.")
 
 
 	with st.expander("Gráfico de Pastel: Distribución de Estaciones por Tipo"):
@@ -249,6 +254,7 @@ else:
 		ax.pie(estaciones_por_tipo, labels=estaciones_por_tipo.index, autopct='%1.1f%%', startangle=90)
 		ax.set_title('Distribución de Estaciones por Tipo')
 		st.pyplot(fig)
+		st.write("Este gráfico de pastel nos permite visualizar la distribución de estaciones por tipo. Cada sector del pastel representa un tipo de estación y el tamaño del sector corresponde a la proporción de estaciones de ese tipo con respecto al total. Las etiquetas en el pastel indican el tipo de estación y el porcentaje correspondiente. El gráfico permite visualizar de manera clara la proporción de estaciones según su tipo.")
 
 	with st.expander("precipitacion maxima"):
 		fig, ax = plt.subplots()
@@ -257,6 +263,7 @@ else:
 		ax.set_ylabel('Precipitación en 24 horas')
 		ax.set_title('Caudal máximo vs. Precipitación en 24 horas')
 		st.pyplot(fig)
+		st.write("Este gráfico de dispersión muestra la relación entre la máxima precipitación en 24 horas y la precipitación en 24 horas. Cada punto representa una muestra de datos, donde el eje x representa la máxima precipitación y el eje y representa la precipitación en 24 horas. El gráfico permite identificar la relación entre estos dos valores y detectar posibles patrones o tendencias. La dispersión de los puntos puede indicar la variabilidad en la relación entre la máxima precipitación y la precipitación en 24 horas.")
 
 	# Calcular el promedio de caudal por provincia y distrito
 	promedio_caudal_por_provincia = df.groupby(['PROVINCIA', 'DISTRITO'])['PROMEDIO24H'].mean().unstack()
@@ -272,8 +279,10 @@ else:
 	
 	    # Mostrar el gráfico en la aplicación
 	    st.pyplot(fig)
+	    st.write("En este gráfico podemos encontrar el promedio de caudal para cada provincia y distrito en el conjunto de datos. Cada barra representa el promedio de caudal para un determinado distrito dentro de una provincia que nos va permite comparar visualmente los promedios de caudal entre diferentes provincias y distritos, y así identificar patrones o diferencias significativas en el caudal promedio en diferentes áreas geográficas.")
+	
 
-
+#..........................................................
 
 	df['AÑO'] = df['FECHA_MUESTRA'].dt.year
 	caudal_por_año = df.groupby('AÑO')['PROMEDIO24H'].mean()
@@ -282,9 +291,13 @@ else:
 	ax.set_xlabel('Año')
 	ax.set_ylabel('Caudal promedio en 24 horas')
 	ax.set_title('Caudal promedio en 24 horas - Comparación entre años')
-	st.pyplot(fig)
+	#cambio aquiii
+	with st.expander("Caudal promedio en 24 horas - Comparación entre años"):
+		st.pyplot(fig)
+		st.write("Este gráfico muestra la comparación del caudal promedio en 24 horas a lo largo de diferentes años, donde el eje x representa los años, y el eje y muestra el caudal promedio. Este gráfico nos permite visualizar las fluctuaciones en el caudal promedio a lo largo del tiempo, identificar tendencias o patrones estacionales, y comparar el comportamiento del caudal entre diferentes años.")
+	
 
-
+#..........................................................
 
 	# Convertir la columna 'FECHA_MUESTRA' al formato adecuado
 	df['FECHA_MUESTRA'] = pd.to_datetime(df['FECHA_MUESTRA'], format='%Y%m%d')
@@ -319,32 +332,27 @@ else:
 	ax2.set_title('Precipitación por fecha en el rango seleccionado')
 
 	# Mostrar los gráficos en Streamlit
-	st.pyplot(fig1)
-	st.pyplot(fig2)
-
-
-
-
-
-
+	with st.expander("Caudal Promedio por fecha en el rango seleccionado"):
+		st.pyplot(fig1)
+		st.write("El gráfico muestra el caudal promedio en 24 horas para las fechas seleccionadas.Este permite visualizar la variación del caudal a lo largo del rango de fechas seleccionado.")
+	with st.expander("Precipitación por fecha en el rango seleccionado"):
+		st.pyplot(fig2)
+		st.write("El gráfico muestra la precipitación en 24 horas para las fechas seleccionadas. El eje x representa la fecha y el eje y muestra la cantidad de precipitación.Asi podemos ver la variación de la precipitación a lo largo del rango de fechas seleccionado.")
+	
 	# Convertir la columna 'FECHA_MUESTRA' en formato de fecha
 	df['FECHA_MUESTRA'] = pd.to_datetime(df['FECHA_MUESTRA'])
+#....................................................................................
 	# Gráfico de área: Distribución de Precipitación
 	fig, ax = plt.subplots()
 	df.plot(x='FECHA_MUESTRA', y='PRECIP24H', kind='area', ax=ax)
 	ax.set_xlabel('Fecha de Muestra')
 	ax.set_ylabel('Precipitación en 24 horas')
 	ax.set_title('Distribución de Precipitación')
-	st.pyplot(fig)
-
-
-	# Gráfico de barras: Caudal y Precipitación
-	fig, ax = plt.subplots()
-	df.plot(x='FECHA_MUESTRA', y=['CAUDAL07H', 'PRECIP24H'], kind='bar', ax=ax)
-	ax.set_xlabel('Fecha de Muestra')
-	ax.set_ylabel('Magnitud')
-	ax.set_title('Caudal y Precipitación')
-	st.pyplot(fig)
+	with st.expander("Distribución de Precipitación"):
+		st.pyplot(fig)
+		st.write("Aqui podemos ver la distribución de la precipitación en 24 horas a lo largo del tiempo. En el eje x  se representa la fecha de muestra y en el eje y muestra la cantidad de precipitación. El gráfico de área permite visualizar la variación de la precipitación a lo largo del tiempo de forma acumulativa.")
+	
+#....................................................
 
 	# Gráfico de dispersión: Caudal vs Precipitación
 	fig, ax = plt.subplots()
@@ -352,16 +360,10 @@ else:
 	ax.set_xlabel('Caudal a las 07:00 horas')
 	ax.set_ylabel('Precipitación en 24 horas')
 	ax.set_title('Relación entre Caudal y Precipitación')
-	st.pyplot(fig)
+	with st.expander("Relación entre Caudal y Precipitación"):
+		st.pyplot(fig)
+		st.write("Se muestra la relación entre el caudal a las 07:00 horas y la precipitación en 24 horas. Se utiliza un gráfico de dispersión para visualizar la dispersión de los datos, para asi poder analizar si existe alguna relación o patrón entre estas dos variables.")
 
-
-	# Gráfico de área: Distribución de Precipitación
-	fig, ax = plt.subplots()
-	df.plot(x='FECHA_MUESTRA', y='PRECIP24H', kind='area', ax=ax)
-	ax.set_xlabel('Fecha de Muestra')
-	ax.set_ylabel('Precipitación en 24 horas')
-	ax.set_title('Distribución de Precipitación')
-	st.pyplot(fig)
 
 	st.markdown(
 	    """
