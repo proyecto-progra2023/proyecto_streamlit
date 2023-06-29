@@ -237,7 +237,7 @@ else:
 
 		fig, ax = plt.subplots()
 		ax.bar(promedio_caudal_por_departamento.index, promedio_caudal_por_departamento)
-		ax.set_xlabel('Departamento')
+		ax.set_xlabel('Provincia')
 		ax.set_ylabel('Promedio de Caudal')
 		ax.set_title('Promedio de Caudal por Provincia')
 		plt.xticks(rotation=45)
