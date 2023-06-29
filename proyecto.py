@@ -334,6 +334,7 @@ else:
 	ax.set_ylabel('Precipitación en 24 horas')
 	ax.set_title('Distribución de Precipitación')
 	with st.expander("Distribución de Precipitación"):
+		plt.xticks(rotation=90)
 		st.pyplot(fig)
 		st.write("Aqui podemos ver la distribución de la precipitación en 24 horas a lo largo del tiempo. En el eje x  se representa la fecha de muestra y en el eje y muestra la cantidad de precipitación. El gráfico de área permite visualizar la variación de la precipitación a lo largo del tiempo de forma acumulativa.")
 	
@@ -346,6 +347,7 @@ else:
 	ax.set_ylabel('Precipitación en 24 horas')
 	ax.set_title('Relación entre Caudal y Precipitación')
 	with st.expander("Relación entre Caudal y Precipitación"):
+		plt.xticks(rotation=90)
 		st.pyplot(fig)
 		st.write("Se muestra la relación entre el caudal a las 07:00 horas y la precipitación en 24 horas. Se utiliza un gráfico de dispersión para visualizar la dispersión de los datos, para asi poder analizar si existe alguna relación o patrón entre estas dos variables.")
 
