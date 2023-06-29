@@ -123,7 +123,7 @@ else:
 	    st.write("Este dataset muestra los datos hidrometeorológicos registrados de las presas, estaciones hidrológicas e hidrométricas.")
 	    st.write("Esta información contiene el nombre de la cuenca, nombre de la estación, medida del caudal a las 007:00 horas, el promedio del caudal a las 24:00 horas, el caudal máximo a las 24:00 horas, niveles de presas a las 7:00 horas, nivel máximo de las presas a las 24:00 horas, el volumen de las presas a las 07:00 y precipitaciones.")
 	    ruta_imagen = "https://servicios.regionpiura.gob.pe/servicios/datos/mapa/crear_mapa.php"
-	    st.image(ruta_imagen, caption='Descripción de la imagen', use_column_width=True)
+	    st.image(ruta_imagen, caption='*Fuente:* Gobierno Regional de Piura', use_column_width=True)
 	# Convertir la columna 'FECHA... en formato de fecha
 
 	df['FECHA_MUESTRA'] = pd.to_datetime(df['FECHA_MUESTRA'], format='%Y%m%d')
