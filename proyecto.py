@@ -284,21 +284,6 @@ else:
 
 #..........................................................
 
-	df['AÑO'] = df['FECHA_MUESTRA'].dt.year
-	caudal_por_año = df.groupby('AÑO')['PROMEDIO24H'].mean()
-	fig, ax = plt.subplots()
-	ax.plot(caudal_por_año.index, caudal_por_año.values)
-	ax.set_xlabel('Año')
-	ax.set_ylabel('Caudal promedio en 24 horas')
-	ax.set_title('Caudal promedio en 24 horas - Comparación entre años')
-	#cambio aquiii
-	with st.expander("Caudal promedio en 24 horas - Comparación entre años"):
-		st.pyplot(fig)
-		st.write("Este gráfico muestra la comparación del caudal promedio en 24 horas a lo largo de diferentes años, donde el eje x representa los años, y el eje y muestra el caudal promedio. Este gráfico nos permite visualizar las fluctuaciones en el caudal promedio a lo largo del tiempo, identificar tendencias o patrones estacionales, y comparar el comportamiento del caudal entre diferentes años.")
-	
-
-#..........................................................
-
 	# Convertir la columna 'FECHA_MUESTRA' al formato adecuado
 	df['FECHA_MUESTRA'] = pd.to_datetime(df['FECHA_MUESTRA'], format='%Y%m%d')
 
