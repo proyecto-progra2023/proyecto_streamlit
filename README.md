@@ -1,1 +1,1 @@
-# proyecto_streamly
+# proyecto_streamlit
