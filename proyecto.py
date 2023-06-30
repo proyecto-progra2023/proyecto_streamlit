@@ -144,7 +144,7 @@ else:
 	st.write("Para mayor información también puede ingresar a:")
 	st.write("[http://servicios.regionpiura.gob.pe/datosh](http://servicios.regionpiura.gob.pe/datosh)")
 	# Crear el gráfico de línea
-	with st.expander("**caudal promedio en 24 horas V.S. fecha muestra**"):
+	with st.expander("**Caudal promedio en 24 horas v.s. fecha muestra**"):
 		fig, ax = plt.subplots()
 		plt.plot(df['FECHA_MUESTRA'], df['PROMEDIO24H'])
 		plt.xlabel('Fecha muestra')
