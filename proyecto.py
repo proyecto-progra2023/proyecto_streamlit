@@ -356,7 +356,7 @@ else:
 	st.markdown(
 	    """
 	    
-	    ¡Diviértete explorando los datos hidrometeorológicos y descubre nuevos conocimientos!
+	    ¡Gracias por tu preferencia, muy pronto tendremos nuevas actualizaciones!
 	    """
 	)
 	
